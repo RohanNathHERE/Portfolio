@@ -129,6 +129,23 @@ main {
 
 
 /* Blog Container */
+
+/* CSS for Update Message */
+.update-message {
+    text-align: center;
+    padding: 50px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+}
+
+.update-message h1 {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 .blog-container {
     display: flex;
     flex-wrap: wrap;
