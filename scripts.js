@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const texts = [
         "where I explore the evolution and pharmacology of G Protein-Coupled Receptors (GPCRs).",
-        "where i investigate the lineage-specific expansion of genes.",
+        "where I investigate the lineage-specific expansion of genes.",
         "where I conduct phylogenetic studies.",
         "where I study protein domain and structure.",
         "where I learn new R scripts and explore innovative ways of visualization."
