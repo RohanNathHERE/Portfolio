@@ -1000,7 +1000,7 @@ footer {
     right: 0px; /* Adjust positioning as needed */
     display: block;
     cursor: pointer;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 1100; /* Ensure it appears above other elements */
 }
 
 .hamburger-menu span {
@@ -1010,6 +1010,7 @@ footer {
     margin: 5px 0;
     background-color: #333;
     transition: transform 0.3s, background-color 0.3s; /* Smooth transition for transform and color */
+    z-index: 1200;
 }
 
 /* Hover effect for moving top and bottom lines */

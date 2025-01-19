@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Text animation setup
     const texts = [
         "where I explore the evolution and pharmacology of G Protein-Coupled Receptors (GPCRs).",
         "where I investigate the lineage-specific expansion of genes.",
@@ -9,40 +10,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let index = 0;
     const animatedTextElement = document.getElementById('animated-text');
-    console.log('Animated text element:', animatedTextElement);
 
-    if (animatedTextElement) {  // Check if element exists before proceeding
+    if (animatedTextElement) {
+        const typeSpeed = 50;
+        const deleteSpeed = 30;
+        const pauseAfterTyping = 1000;
+        const pauseAfterDeleting = 500;
+
         function typeWriter(text, callback) {
             let i = 0;
-            const speed = 50;
-
             function typing() {
                 if (i < text.length) {
                     animatedTextElement.textContent += text.charAt(i);
                     i++;
-                    setTimeout(typing, speed);
-                } else if (callback) {
-                    setTimeout(callback, 1000);
+                    setTimeout(typing, typeSpeed);
+                } else {
+                    setTimeout(callback, pauseAfterTyping);
                 }
             }
-
             typing();
         }
 
         function deleteText(callback) {
-            let i = animatedTextElement.textContent.length;
-            const speed = 30;
-
+            let length = animatedTextElement.textContent.length;
             function deleting() {
-                if (i > 0) {
-                    animatedTextElement.textContent = animatedTextElement.textContent.substring(0, i - 1);
-                    i--;
-                    setTimeout(deleting, speed);
-                } else if (callback) {
-                    setTimeout(callback, 500);
+                if (length > 0) {
+                    animatedTextElement.textContent = animatedTextElement.textContent.slice(0, -1);
+                    length--;
+                    setTimeout(deleting, deleteSpeed);
+                } else {
+                    setTimeout(callback, pauseAfterDeleting);
                 }
             }
-
             deleting();
         }
 
@@ -58,16 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
         cycleTexts();
     }
 
-    // Smooth scrolling for research video
+    // Smooth scrolling for research video section
     const videoSection = document.querySelector('.research-video');
-    if (videoSection) {
-        const videoLink = document.querySelector('.scroll-to-video');
-        if (videoLink) {
-            videoLink.addEventListener('click', (event) => {
-                event.preventDefault();
-                videoSection.scrollIntoView({ behavior: 'smooth' });
-            });
-        }
+    const videoLink = document.querySelector('.scroll-to-video');
+
+    if (videoSection && videoLink) {
+        videoLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            videoSection.scrollIntoView({ behavior: 'smooth' });
+        });
     }
 
     // Form validation
@@ -75,10 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const message = document.getElementById("message").value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // Basic email validation pattern
 
-        if (name === "" || email === "" || message === "") {
+        if (!name || !email || !message) {
             alert("Please fill in all the required fields.");
-            event.preventDefault(); // Prevent form submission if validation fails
+            event.preventDefault();
+            return false;
+        }
+
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            event.preventDefault();
             return false;
         }
 
@@ -94,15 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('.nav-menu');
 
-    console.log('Hamburger menu:', hamburgerMenu);
-    console.log('Nav menu:', navMenu);
-
     if (hamburgerMenu && navMenu) {
         hamburgerMenu.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
 
-        // Close the menu when it loses focus (optional, for better UX)
+        // Close the menu when clicking outside
         document.addEventListener('click', (event) => {
             if (!hamburgerMenu.contains(event.target) && !navMenu.contains(event.target)) {
                 navMenu.classList.remove('active');
