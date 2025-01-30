@@ -5,28 +5,403 @@
     box-sizing: border-box;
 }
 
-@media (max-width: 2400px){
-/* Body Styling */
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    color: #333;
-    background-color: #f8f8f8;
-    line-height: 1.6;
+@media (max-width: 2400px) {
+    /* Body Styling */
+    body {
+        font-family: 'Inter', 'Roboto', Arial, sans-serif; /* Inter is a modern, clean font */
+        color: #2d3748; /* Slightly darker gray for better readability */
+        background-color: #f9fafb; /* Soft, light background */
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased; /* Smooth fonts for modern browsers */
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Add a subtle gradient or texture to the background for depth */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.1), transparent 20%),
+                    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.1), transparent 20%);
+        pointer-events: none; /* Ensure it doesn't interfere with interactions */
+        z-index: -1;
+    }
+
+    /* Add smooth transitions for interactive elements */
+    a, button, input, textarea {
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Add a hover effect for links */
+    a:hover {
+        color: #3182ce; /* A soft blue for interactivity */
+        text-decoration: underline;
+    }
+
+    /* Add a subtle box-shadow to interactive elements */
+    button, input[type="submit"], input[type="button"] {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-1px); /* Slight lift on hover */
+    }
 }
+
+/* Header Styling */
+header {
+    background-color: #ffffff;
+    padding: 30px 20px; /* Slightly more padding for better spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    text-align: center;
+    position: sticky; /* Make the header sticky for better navigation */
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    backdrop-filter: blur(8px); /* Adds a subtle blur effect for a modern look */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: -0.05em; /* Tighter letter spacing for a modern look */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+header h1:hover {
+    color: #3182ce; /* Interactive hover effect */
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-weight: 400; /* Lighter weight for contrast */
+    margin-top: 5px; /* Slightly reduced margin for tighter spacing */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+header p:hover {
+    color: #4a5568; /* Darker gray on hover for interactivity */
+}
+
+/* Add a subtle animation to the header on page load */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    animation: fadeInDown 0.6s ease-out; /* Smooth fade-in animation */
+}
+
+/* Navigation Styling */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
+    padding: 12px 10px; /* Slightly more padding for better spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    position: sticky; /* Make the nav sticky for better navigation */
+    top: 80px; /* Adjust based on header height */
+    z-index: 999; /* Ensure it stays above other content */
+    backdrop-filter: blur(8px); /* Subtle blur effect for a modern look */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+}
+
+nav a {
+    text-decoration: none;
+    color: #4a5568; /* Slightly darker gray for better readability */
+    margin: 0 20px; /* Slightly more spacing between links */
+    font-size: 1.1rem;
+    font-weight: 500; /* Medium weight for better emphasis */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    position: relative; /* For the hover effect */
+}
+
+nav a:hover {
+    color: #3182ce; /* Soft blue for interactivity */
+}
+
+/* Add an underline effect on hover */
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Position the underline below the text */
+    width: 100%;
+    height: 2px;
+    background-color: #3182ce; /* Matching hover color */
+    transform: scaleX(0); /* Start with no width */
+    transform-origin: right;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+nav a:hover::after {
+    transform: scaleX(1); /* Expand the underline on hover */
+    transform-origin: left;
+}
+
+/* Add a subtle animation to the nav on page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+nav {
+    animation: fadeIn 0.6s ease-out; /* Smooth fade-in animation */
+}
+
+/* Section Styling */
+section {
+    padding: 50px 30px; /* Slightly more padding for better spacing */
+    background-color: #ffffff;
+    margin: 30px auto; /* Increased margin for better separation */
+    max-width: 1000px;
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+section:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 25px; /* Slightly more spacing */
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: -0.03em; /* Tighter letter spacing for a modern look */
+    position: relative; /* For the underline effect */
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Position the underline below the text */
+    width: 60px; /* Length of the underline */
+    height: 4px;
+    background-color: #3182ce; /* Soft blue for a pop of color */
+    border-radius: 2px; /* Rounded corners for the underline */
+}
+
+section p {
+    font-size: 1.1rem;
+    color: #4a5568; /* Slightly darker gray for better readability */
+    line-height: 1.8;
+    margin-bottom: 20px; /* Added margin for better spacing */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+section p:hover {
+    color: #2c3e50; /* Darker color on hover for interactivity */
+}
+
+/* Add a subtle animation to sections on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
+}
+
+/* Interactive Elements */
+button, .btn {
+    background-color: #3182ce; /* Soft blue for a modern look */
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px; /* Slightly more padding for better clickability */
+    border-radius: 8px; /* Slightly larger radius for a softer look */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500; /* Medium weight for better emphasis */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2); /* Subtle shadow for depth */
+}
+
+button:hover, .btn:hover {
+    background-color: #2c5282; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 16px rgba(49, 130, 206, 0.3); /* Enhanced shadow on hover */
+}
+
+button:active, .btn:active {
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2); /* Reset shadow on click */
+}
+
+/* Hover Effects for Cards/Projects */
+.project-card {
+    background-color: #ffffff;
+    padding: 25px; /* Slightly more padding for better spacing */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* Slightly larger lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+/* Add a subtle animation to project cards on hover */
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+}
+
+.project-card:hover::after {
+    opacity: 1; /* Show the gradient effect on hover */
+}
+
+/* Add a fade-in animation to project cards on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 30px 20px; /* Slightly more padding for better spacing */
+    background-color: #2c3e50; /* Dark background for contrast */
+    color: #ffffff;
+    margin-top: 60px; /* Increased margin for better separation */
+    font-size: 1rem;
+    position: relative; /* For the gradient overlay */
+    overflow: hidden; /* Ensure the gradient doesn't overflow */
+}
+
+/* Add a subtle gradient overlay for depth */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+    z-index: 1;
+}
+
+footer a {
+    color: #63b3ed; /* Soft blue for links */
+    text-decoration: none;
+    font-weight: 500; /* Medium weight for better emphasis */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    position: relative; /* For the hover effect */
+}
+
+footer a:hover {
+    color: #4299e1; /* Slightly darker blue on hover */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Add an underline effect on hover */
+footer a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Position the underline below the text */
+    width: 100%;
+    height: 2px;
+    background-color: #4299e1; /* Matching hover color */
+    transform: scaleX(0); /* Start with no width */
+    transform-origin: right;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+footer a:hover::after {
+    transform: scaleX(1); /* Expand the underline on hover */
+    transform-origin: left;
+}
+
+/* Add a subtle animation to the footer on page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    animation: fadeIn 0.6s ease-out; /* Smooth fade-in animation */
+}
+
 
 /* Navigation Bar */
 header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+    padding: 15px 20px; /* Slightly more padding for better spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    position: sticky; /* Make the header sticky for better navigation */
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    backdrop-filter: blur(8px); /* Subtle blur effect for a modern look */
 }
 
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
+    max-width: 1200px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add padding for better spacing */
 }
 
 /* Style for the logo container */
@@ -42,67 +417,100 @@ header {
     align-items: center;
     text-decoration: none;
     color: inherit;
+    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.logo a:hover {
+    opacity: 0.8; /* Slight fade on hover */
 }
 
 /* Style for the logo image */
 .logo img {
     width: 100px;
     height: auto;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.logo img:hover {
+    transform: scale(1.05); /* Slight scale on hover */
 }
 
 .nav-menu {
     display: flex;
     justify-content: center;
     flex: 1;
+    gap: 20px; /* Add gap between menu items */
 }
 
 .nav-menu a {
     position: relative;
     text-decoration: none;
-    color: #000;
+    color: #2c3e50; /* Darker gray for better readability */
     padding: 0 15px;
-    overflow: hidden;
+    font-size: 1.1rem;
+    font-weight: 500; /* Medium weight for better emphasis */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .nav-menu a::before {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0;
+    bottom: -5px; /* Position the underline below the text */
     width: 0;
     height: 2px;
-    background: #000;
-    transition: width 0.3s ease, left 0.3s ease;
+    background: #3182ce; /* Soft blue for a pop of color */
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition */
     transform: translateX(-50%);
 }
 
 .nav-menu a:hover::before {
-    width: 100%;
+    width: 100%; /* Expand the underline on hover */
     left: 0;
-    color: inherit;
-    transition: width 0.6s ease, left 0.6s ease;
     transform: translateX(0%);
+}
+
+.nav-menu a:hover {
+    color: #3182ce; /* Change text color on hover */
 }
 
 /* Social Media Links */
 .social-media {
     display: flex;
     align-items: center;
+    gap: 15px; /* Add gap between social icons */
 }
 
 .social-icon {
     margin-left: 15px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .social-icon img {
     width: 24px;
     height: 24px;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .social-icon img:hover {
-    transform: scale(1.1);
-    filter: brightness(0.8);
+    transform: scale(1.2); /* Slightly larger scale on hover */
+    filter: brightness(0.8); /* Slight fade on hover */
+}
+
+/* Add a subtle animation to the nav on page load */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    animation: fadeInDown 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* Main Section */
@@ -110,50 +518,129 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70vh;
+    height: 80vh; /* Slightly taller for better visual impact */
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px; /* More padding for better spacing */
+    background-color: #f9fafb; /* Light background for contrast */
+    position: relative; /* For the gradient overlay */
+    overflow: hidden; /* Ensure the gradient doesn't overflow */
+}
+
+/* Add a subtle gradient overlay for depth */
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.1), transparent 30%),
+                radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.1), transparent 30%);
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+    z-index: 0;
 }
 
 /* Welcome Section */
+.welcome-section {
+    position: relative;
+    z-index: 1; /* Ensure content is above the gradient overlay */
+    max-width: 800px; /* Limit width for better readability */
+}
+
 .welcome-section h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 48px; /* Slightly larger for emphasis */
+    margin-bottom: 20px; /* More spacing */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1.2; /* Better line height for readability */
+    animation: fadeInUp 0.8s ease-out; /* Smooth fade-in animation */
 }
 
 .welcome-section p {
-    font-size: 18px;
-    color: #666;
+    font-size: 20px; /* Slightly larger for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
+    margin-bottom: 30px; /* More spacing */
+    animation: fadeInUp 1s ease-out; /* Smooth fade-in animation */
+}
+
+/* Add a call-to-action button */
+.welcome-section .cta-button {
+    background-color: #3182ce; /* Soft blue for a modern look */
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px; /* Slightly more padding for better clickability */
+    border-radius: 8px; /* Slightly larger radius for a softer look */
+    font-size: 1rem;
+    font-weight: 500; /* Medium weight for better emphasis */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2); /* Subtle shadow for depth */
+    animation: fadeInUp 1.2s ease-out; /* Smooth fade-in animation */
+}
+
+.welcome-section .cta-button:hover {
+    background-color: #2c5282; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 16px rgba(49, 130, 206, 0.3); /* Enhanced shadow on hover */
+}
+
+.welcome-section .cta-button:active {
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2); /* Reset shadow on click */
+}
+
+/* Fade-in animation for welcome section */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
 /* Blog Container */
-
-/* CSS for Update Message */
-.update-message {
-    text-align: center;
-    padding: 50px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    font-size: 2em;
-    color: #333;
-    font-weight: bold;
-}
-
-.update-message h1 {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 .blog-container {
     display: flex;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: auto;
-    padding: 10px;
-    gap: 5px;
-    justify-content: space-between;
+    margin: 40px auto; /* Increased margin for better spacing */
+    padding: 20px; /* More padding for better spacing */
+    gap: 20px; /* Increased gap for better separation */
+    justify-content: center; /* Center items for a balanced layout */
+}
+
+/* CSS for Update Message */
+.update-message {
+    text-align: center;
+    padding: 60px 20px; /* More padding for better spacing */
+    background-color: #f9fafb; /* Light background for contrast */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    font-size: 1.5rem; /* Adjusted font size for better readability */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 600; /* Semi-bold for emphasis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    margin: 40px auto; /* Added margin for better separation */
+    max-width: 800px; /* Limit width for better readability */
+}
+
+.update-message h1 {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif; /* Modern, clean font */
+    font-size: 2.5rem; /* Larger font size for emphasis */
+    color: #3182ce; /* Soft blue for a pop of color */
+    margin-bottom: 10px; /* Added spacing */
+}
+
+.update-message p {
+    font-size: 1.2rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.6; /* Better line height for readability */
 }
 
 /* Blog Header */
@@ -163,178 +650,328 @@ main {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    margin-bottom: 10px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px; /* Increased margin for better spacing */
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+    padding: 30px 20px; /* More padding for better spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
 }
 
 .blog-header h1 {
-    font-size: 42px;
+    font-size: 2.5rem; /* Adjusted font size for better readability */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    margin-bottom: 15px; /* Added spacing */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 .blog-header p {
-    max-width: 1200px;
+    max-width: 800px; /* Limit width for better readability */
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
+    margin: 0 auto; /* Center the text */
+}
+
+/* Add a subtle animation to the blog header on page load */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-header {
+    animation: fadeInDown 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* Blog Posts */
 .blog-posts {
     display: grid;
-    direction: ltr;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Increased gap for better separation */
     justify-content: center;
+    padding: 20px; /* Added padding for better spacing */
+    max-width: 1200px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the grid */
 }
 
 .blog-post {
     background-color: #fff;
-    padding: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px; /* More padding for better spacing */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.blog-post:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .blog-post h2 {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 1.25rem; /* Adjusted font size for better readability */
+    margin-bottom: 10px; /* More spacing */
+    font-weight: 600; /* Semi-bold for emphasis */
+    color: #2c3e50; /* Darker gray for better readability */
 }
 
 .blog-post h2 a {
     text-decoration: none;
-    color: #007bff;
+    color: #3182ce; /* Soft blue for a modern look */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .blog-post h2 a:hover {
-    text-decoration: underline;
+    color: #2c5282; /* Darker blue on hover */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Add an underline effect on hover */
+.blog-post h2 a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #3182ce; /* Matching hover color */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.blog-post h2 a:hover::after {
+    width: 100%; /* Expand the underline on hover */
 }
 
 .post-image img {
-    max-width: 500px;
-    max-height: 500px;
-    object-fit: contain;
-    border-radius: 8px;
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Limit height for consistency */
+    object-fit: cover; /* Ensure the image covers the area */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    margin-bottom: 15px; /* Added spacing */
 }
 
 .post-content h2 {
-    font-size: 16px;
-    margin-bottom: auto;
+    font-size: 1.25rem; /* Adjusted font size for better readability */
+    margin-bottom: 10px; /* More spacing */
+    font-weight: 600; /* Semi-bold for emphasis */
+    color: #2c3e50; /* Darker gray for better readability */
 }
 
 .post-content h2 a {
     text-decoration: none;
-    color: #007bff;
+    color: #3182ce; /* Soft blue for a modern look */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .post-content h2 a:hover {
-    text-decoration: underline;
+    color: #2c5282; /* Darker blue on hover */
+    text-decoration: none; /* Remove underline */
 }
 
 .post-date {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 5px;
-    text-align: center;
+    font-size: 0.875rem; /* Adjusted font size for better readability */
+    color: #7f8c8d; /* Light gray for contrast */
+    margin-bottom: 10px; /* More spacing */
+    text-align: left; /* Align left for better readability */
 }
 
 .post-summary {
-    font-size: 14px;
-    color: #666;
+    font-size: 0.9375rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.6; /* Better line height for readability */
+    margin-bottom: 15px; /* Added spacing */
+}
+
+/* Add a subtle animation to blog posts on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-post {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* Blog Post Page Styling */
 .blog-post-page {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
+    max-width: 800px; /* Adjusted for better readability */
+    margin: 40px auto; /* More margin for better spacing */
+    padding: 40px 20px; /* More padding for better spacing */
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.blog-post-page:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .blog-post {
-    margin: 0 auto 100px;
+    margin: 0 auto 60px; /* Adjusted margin for better spacing */
 }
 
 /* Image styling */
 .post-image img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    margin-bottom: 30px; /* Added spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
 }
 
 /* Heading styling */
 .post-content h1,
 .post-content h2 {
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* More spacing */
     text-align: left;
+    color: #2c3e50; /* Darker gray for better readability */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 .post-content h1 {
-    font-size: 36px;
+    font-size: 2.5rem; /* Adjusted font size for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1.2; /* Better line height for readability */
 }
 
 .post-content h2 {
-    font-size: 24px;
-    text-align: center;
+    font-size: 1.75rem; /* Adjusted font size for better readability */
+    font-weight: 600; /* Semi-bold for emphasis */
+    margin-top: 40px; /* Added spacing */
+    text-align: left; /* Align left for better readability */
 }
 
 /* Paragraph styling */
 .post-content p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
+    margin-bottom: 20px; /* Added spacing */
+}
+
+/* Link styling */
+.post-content a {
+    color: #3182ce; /* Soft blue for a modern look */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.post-content a:hover {
+    color: #2c5282; /* Darker blue on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Add a subtle animation to the blog post page on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-post-page {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
+}
+
+/* Paragraph styling */
+.post-content p {
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    margin-bottom: 25px; /* More spacing */
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.8; /* Better line height for readability */
     overflow-wrap: break-word;
+    font-family: 'Inter', sans-serif; /* Modern, clean font */
 }
 
 /* Date styling */
 .post-date {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 0.875rem; /* Adjusted font size for better readability */
+    color: #7f8c8d; /* Light gray for contrast */
+    margin-bottom: 30px; /* More spacing */
+    text-align: left; /* Align left for better readability */
+    font-weight: 500; /* Medium weight for emphasis */
 }
 
 /* List styling */
 .post-body ul {
     list-style-type: disc;
-    padding-left: 20px;
-    margin: 10px 0;
-    list-style-position: inside;
+    padding-left: 25px; /* More padding for better spacing */
+    margin: 20px 0; /* More spacing */
+    list-style-position: outside; /* Bullets outside for better alignment */
     text-align: left;
-    text-justify: auto;
 }
 
 .post-body li {
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* More spacing */
     text-align: left;
     padding: 10px;
-    list-style-position: inside;
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
+    font-family: 'Inter', sans-serif; /* Modern, clean font */
 }
 
+/* Back button styling */
 .back-button {
     background-color: transparent;
-    color: black;
+    color: #2c3e50; /* Darker gray for better readability */
     border: none;
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 16px;
-    transition: color 0.3s ease;
+    font-size: 1rem; /* Adjusted font size for better readability */
+    font-weight: 500; /* Medium weight for emphasis */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    margin-bottom: 30px; /* Added spacing */
 }
 
 .back-button svg {
     margin-right: 8px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .back-button:hover {
-    color: #333;
+    color: #3182ce; /* Soft blue for interactivity */
+    transform: translateX(-5px); /* Slight shift on hover */
 }
 
 .back-button:hover svg {
-    transform: translateX(-3px);
+    transform: translateX(-8px); /* Enhanced shift on hover */
+}
+
+/* Add a subtle animation to the back button on page load */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.back-button {
+    animation: fadeInLeft 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* About Section */
@@ -342,8 +979,9 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 40px;
+    padding: 60px 20px; /* More padding for better spacing */
     width: 100%;
+    background-color: #f9fafb; /* Light background for contrast */
 }
 
 .about-box {
@@ -354,41 +992,65 @@ main {
     width: 100%;
     max-width: 1200px;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 40px; /* More padding for better spacing */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
     margin-top: 60px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.about-box:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .about-info {
     flex: 1;
-    padding-right: 20px;
+    padding-right: 40px; /* More padding for better spacing */
     text-align: left;
+}
+
+.about-info h2 {
+    font-size: 2rem; /* Adjusted font size for better readability */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    margin-bottom: 20px; /* More spacing */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
+}
+
+.about-info p {
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
+    margin-bottom: 20px; /* Added spacing */
 }
 
 .portfolio-info {
     flex: 1;
     max-width: 300px;
-    margin-left: 20px;
+    margin-left: 40px; /* More spacing */
 }
 
 .portfolio-picture {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px; /* Slightly larger radius for a softer look */
     filter: grayscale(100%);
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
 }
 
 .portfolio-picture:hover {
     filter: grayscale(0%);
+    transform: scale(1.02); /* Slight scale on hover */
 }
 
 .about-links {
-    margin-top: 20px;
+    margin-top: 30px; /* More spacing */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start; /* Align links to the left */
+    gap: 20px; /* Added gap for better spacing */
 }
 
 .link-item {
@@ -396,46 +1058,62 @@ main {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.link-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
 }
 
 .link-item a {
     text-decoration: none;
-    color: #007BFF;
+    color: #3182ce; /* Soft blue for a modern look */
     text-align: center;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.link-item a:hover {
+    color: #2c5282; /* Darker blue on hover */
+    text-decoration: none; /* Remove underline */
 }
 
 .link-icon {
     width: 40px;
     height: auto;
     margin-bottom: 8px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.link-item a:hover {
-    text-decoration: underline;
+.link-item:hover .link-icon {
+    transform: scale(1.1); /* Slight scale on hover */
 }
 
 .link-text {
     margin-top: 8px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 0.875rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    font-weight: 500; /* Medium weight for emphasis */
 }
 
-.about-links a {
-    display: block;
-    color: #007BFF;
-    text-decoration: none;
-    margin-right: 10px;
+/* Add a subtle animation to the about section on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.about-links a:hover {
-    text-decoration: underline;
+.about-box {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* Footer */
 footer {
-    background-color: #f1f1f1;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
     padding: 20px;
     text-align: center;
     width: 100%;
@@ -443,6 +1121,9 @@ footer {
     position: fixed;
     bottom: 0;
     z-index: 999;
+    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+    backdrop-filter: blur(8px); /* Subtle blur effect for a modern look */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
 }
 
 /* Footer Content */
@@ -452,21 +1133,65 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px; /* Added gap for better spacing */
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+    justify-content: center;
+    gap: 15px; /* Added gap for better spacing */
 }
 
 .footer-links a {
     margin: 0 10px;
     text-decoration: none;
-    color: #007BFF;
-}
-
-.footer-content p {
-    font-size: 14px;
-    color: #666;
+    color: #3182ce; /* Soft blue for a modern look */
+    font-size: 0.9375rem; /* Adjusted font size for better readability */
+    font-weight: 500; /* Medium weight for emphasis */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .footer-links a:hover {
-    text-decoration: underline;
+    color: #2c5282; /* Darker blue on hover */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Add an underline effect on hover */
+.footer-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #3182ce; /* Matching hover color */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.footer-links a:hover::after {
+    width: 100%; /* Expand the underline on hover */
+}
+
+.footer-content p {
+    font-size: 0.875rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    margin: 0; /* Remove default margin */
+    line-height: 1.6; /* Better line height for readability */
+}
+
+/* Add a subtle animation to the footer on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 
@@ -474,65 +1199,111 @@ footer {
 /* Publications Container */
 .publications-container {
     max-width: 1200px; /* Increased max-width for the publications container */
-    margin: auto;
-    padding: 20px;
+    margin: 40px auto; /* More margin for better spacing */
+    padding: 40px 20px; /* More padding for better spacing */
     background-color: #fff; /* Background color for the publications container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.publications-container:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 /* Year Section */
 .year-section {
     margin-bottom: 40px;
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background for each year section */
-    border-radius: 8px; /* Rounded corners for each section */
+    padding: 30px; /* More padding for better spacing */
+    background-color: #f9fafb; /* Light background for each year section */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.year-section:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 /* Year Heading */
 .year-heading {
-    font-size: 36px; /* Larger font size for the year */
-    font-weight: bold;
-    margin-bottom: 10px; /* Space below the heading */
-    border-bottom: 2px solid #ddd; /* Border for visual separation */
-    padding-bottom: 5px;
-    color: #333;
+    font-size: 2rem; /* Adjusted font size for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    margin-bottom: 20px; /* More spacing */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05); /* Subtle border for visual separation */
+    padding-bottom: 10px;
+    color: #2c3e50; /* Darker gray for better readability */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 /* Publication Item */
 .publication-item {
     display: flex;
     align-items: center;
-    gap: 15px; /* Increased gap for better spacing */
-    border-bottom: 1px solid #ddd; /* Divider line */
-    padding: 15px 0; /* Increased padding for better spacing */
+    gap: 20px; /* Increased gap for better spacing */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for visual separation */
+    padding: 20px 0; /* More padding for better spacing */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.publication-item:last-child {
+    border-bottom: none; /* Remove border for the last item */
 }
 
 /* Publication Name */
 .publication-name {
-    font-size: 16px; /* Font size for publication title */
-    color: #333;
-    line-height: 1.4; /* Adjust line height for better readability */
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
     text-align: left; /* Align the name to the left */
+    flex: 1; /* Allow the name to take up remaining space */
 }
 
 /* Publication Name Heading */
 .publication-name h3 {
     margin: 0; /* Remove default margin */
+    font-size: 1.25rem; /* Adjusted font size for better readability */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 600; /* Semi-bold for emphasis */
+    margin-bottom: 5px; /* Added spacing */
 }
 
 /* Publication Image */
 .publication-image img {
     max-width: 150px; /* Increased width for a larger image */
     height: auto;
+    border-radius: 8px; /* Rounded corners for the image */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .publication-item:hover {
-    background-color: #f1f1f1; /* Subtle background color change on hover */
+    background-color: rgba(49, 130, 206, 0.05); /* Subtle background color change on hover */
     border-radius: 8px; /* Maintain rounded corners on hover */
     transform: translateY(-5px); /* Slight lift effect on hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow effect on hover */
+}
+
+.publication-item:hover .publication-image img {
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Add a subtle animation to the publications container on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.publications-container {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 
@@ -542,24 +1313,46 @@ footer {
     align-items: center;
     justify-content: space-between;
     max-width: 1500px;
-    margin: auto;
-    padding: 20px;
+    margin: 40px auto; /* More margin for better spacing */
+    padding: 40px 20px; /* More padding for better spacing */
+    gap: 40px; /* Added gap for better spacing */
+    background-color: #f9fafb; /* Light background for contrast */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.research-container:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .research-content {
     flex: 1;
-    padding: 20px;
+    padding: 30px; /* More padding for better spacing */
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.research-content:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .research-content h1 {
-    font-size: 36px;
+    font-size: 2.5rem; /* Adjusted font size for better readability */
     margin-bottom: 20px;
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 .research-content p {
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    line-height: 1.8; /* Better line height for readability */
     margin-bottom: 20px;
     text-align: left;
 }
@@ -569,21 +1362,38 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .research-video iframe {
     width: 100%;
     max-width: 560px;
     height: 315px; /* Explicitly set the height */
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for depth */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
-/* Optional: Add a slight hover effect for interactivity */
-.research-content:hover,
 .research-video:hover iframe {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease;
+    transform: scale(1.02); /* Slight scale on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+/* Add a subtle animation to the research container on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.research-container {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 
@@ -591,12 +1401,18 @@ footer {
 .contact-container {
     display: flex;
     justify-content: space-between;
-    margin: 50px auto;
+    margin: 60px auto; /* More margin for better spacing */
     max-width: 1200px;
-    padding: 20px;
+    padding: 40px; /* More padding for better spacing */
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.contact-container:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .contact-info {
@@ -605,29 +1421,31 @@ footer {
 }
 
 .contact-info h2 {
-    font-size: 24px;
+    font-size: 2rem; /* Adjusted font size for better readability */
     margin-bottom: 20px;
-    color: #333;
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 .contact-info p {
-    font-size: 16px;
-    margin: 10px 0;
-    color: #666;
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    margin: 15px 0; /* More spacing */
+    color: #4a5568; /* Slightly darker gray for contrast */
     text-align: left;
+    line-height: 1.8; /* Better line height for readability */
 }
 
 .contact-info strong {
-    font-weight: bold;
-    color: #333;
-    text-align: left;
+    font-weight: 600; /* Semi-bold for emphasis */
+    color: #2c3e50; /* Darker gray for better readability */
 }
 
 .vertical-line {
     width: 1px;
-    background-color: #ddd;
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle border for depth */
     height: auto;
-    margin: 0 20px;
+    margin: 0 40px; /* More spacing */
 }
 
 .contact-form {
@@ -636,9 +1454,11 @@ footer {
 }
 
 .contact-form h2 {
-    font-size: 24px;
+    font-size: 2rem; /* Adjusted font size for better readability */
     margin-bottom: 20px;
-    color: #333;
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 .contact-form .form-group {
@@ -646,134 +1466,232 @@ footer {
 }
 
 .contact-form label {
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #555;
+    font-size: 1rem; /* Adjusted font size for better readability */
+    margin-bottom: 8px; /* More spacing */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    font-weight: 500; /* Medium weight for emphasis */
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s ease;
+    padding: 12px; /* More padding for better spacing */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for depth */
+    border-radius: 8px; /* Slightly larger radius for a softer look */
+    font-size: 1rem; /* Adjusted font size for better readability */
+    background-color: #f9fafb; /* Light background for contrast */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     background-color: #fff;
-    border-color: #aaa;
+    border-color: #3182ce; /* Soft blue for focus */
     outline: none;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1); /* Subtle focus effect */
 }
 
 .contact-form button {
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 12px 24px; /* More padding for better spacing */
+    font-size: 1rem; /* Adjusted font size for better readability */
     color: #fff;
-    background-color: #007BFF;
+    background-color: #3182ce; /* Soft blue for a modern look */
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Slightly larger radius for a softer look */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
 .contact-form button:hover {
-    background-color: #0056b3;
+    background-color: #2c5282; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.contact-form button:active {
+    transform: translateY(0); /* Reset lift on click */
 }
 
 .form-group input, .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s ease;
+    padding: 12px; /* More padding for better spacing */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for depth */
+    border-radius: 8px; /* Slightly larger radius for a softer look */
+    font-size: 1rem; /* Adjusted font size for better readability */
+    background-color: #f9fafb; /* Light background for contrast */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
 }
 
 .form-group input:focus, .form-group textarea:focus {
     background-color: #fff;
-    border-color: #aaa;
+    border-color: #3182ce; /* Soft blue for focus */
     outline: none;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1); /* Subtle focus effect */
 }
 
 .error {
-    color: red;
+    color: #e53e3e; /* Red for errors */
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 0.875rem; /* Adjusted font size for better readability */
+    font-weight: 500; /* Medium weight for emphasis */
+}
+
+/* Add a subtle animation to the contact container on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-container {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* Map Container */
 .map-container {
     max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
+    margin: 60px auto; /* More margin for better spacing */
+    padding: 40px; /* More padding for better spacing */
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.map-container:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .map-container h2 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 30px; /* More spacing */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-size: 2rem; /* Adjusted font size for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
 }
 
 .map-container iframe {
     width: 100%;
-    border-radius: 10px;
+    height: 400px; /* Set a fixed height for consistency */
+    border-radius: 12px; /* Slightly larger radius for a softer look */
     border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.map-container iframe:hover {
+    transform: scale(1.02); /* Slight scale on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+/* Add a subtle animation to the map container on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.map-container {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* License Container */
 .license-container {
     max-width: 1200px;
-    margin: 100px auto 50px; /* Increased margin-top for more space above the container */
-    padding: 20px;
+    margin: 100px auto 60px; /* Increased margin for better spacing */
+    padding: 40px; /* More padding for better spacing */
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Slightly larger radius for a softer look */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.license-container:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 /* Main Title */
 .license-container h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 2.5rem; /* Adjusted font size for better readability */
+    margin-bottom: 30px; /* More spacing */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 700; /* Bold for emphasis */
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
     text-align: center;
 }
 
 /* Section Titles */
 .license-container h2 {
-    font-size: 28px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #333;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
+    font-size: 2rem; /* Adjusted font size for better readability */
+    margin-top: 30px; /* More spacing */
+    margin-bottom: 15px; /* More spacing */
+    color: #2c3e50; /* Darker gray for better readability */
+    font-weight: 600; /* Semi-bold for emphasis */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05); /* Subtle border for visual separation */
+    padding-bottom: 10px; /* More padding for better spacing */
 }
 
 /* Paragraphs */
 .license-container p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #666;
-    margin: 10px 0;
+    font-size: 1.1rem; /* Adjusted font size for better readability */
+    line-height: 1.8; /* Better line height for readability */
+    color: #4a5568; /* Slightly darker gray for contrast */
+    margin: 15px 0; /* More spacing */
     text-align: left;
 }
 
 /* Links */
 .license-container a {
-    color: #007BFF;
+    color: #3182ce; /* Soft blue for a modern look */
     text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .license-container a:hover {
-    text-decoration: underline;
+    color: #2c5282; /* Darker blue on hover */
+    text-decoration: none; /* Remove underline */
 }
+
+/* Add an underline effect on hover */
+.license-container a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #3182ce; /* Matching hover color */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.license-container a:hover::after {
+    width: 100%; /* Expand the underline on hover */
+}
+
+/* Add a subtle animation to the license container on page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.license-container {
+    animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
 }
 
 /* Media Queries */
@@ -783,7 +1701,7 @@ footer {
     /* General Styles */
     body, html {
         margin: 0;
-        padding: 0px;
+        padding: 0;
         width: 100%;
         height: 100%;
         display: flex;
@@ -795,27 +1713,28 @@ footer {
         max-width: 100%; /* Prevent elements from exceeding viewport width */
     }
 
-    .main-content{
+    .main-content {
         flex: 1;
     }
-    
-    .nav-container{
+
+    /* Navigation Container */
+    .nav-container {
         position: relative;
         display: flex;
         justify-content: center;
-        padding: 0 10px;
-        height: 50px; /* Increase the height of the nav container */
+        padding: 0 20px; /* More padding for better spacing */
+        height: 60px; /* Increase the height of the nav container */
     }
 
     .social-media {
         position: absolute;
-        top: 10px;
-        right: 0px;
+        top: 15px; /* Adjusted position */
+        right: 20px; /* Adjusted position */
     }
 
-    .logo{
+    .logo {
         position: absolute;
-        left: 0; /* Position to the left */
+        left: 20px; /* Adjusted position */
         top: 50%; /* Center vertically within .nav-container */
         transform: translateY(-50%); /* Adjust vertical centering */
         display: flex;
@@ -823,44 +1742,47 @@ footer {
         height: 100%;
     }
 
+    /* Contact, License, and Blog Containers */
     .contact-container,
     .license-container,
     .blog-container {
         flex-direction: column;
-        padding: 20px;
+        padding: 30px; /* More padding for better spacing */
     }
 
-    .research-container{
+    /* Research Container */
+    .research-container {
         flex-direction: column;
         width: 100%;
-        position: absolute;
-        top: 100px;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        position: static; /* Remove absolute positioning */
+        margin-top: 40px; /* Adjusted margin */
+        margin-bottom: 40px; /* Adjusted margin */
     }
 
-    .research-video{
-        margin-top: 50px;
-        margin-bottom: 100px;
+    .research-video {
+        margin-top: 30px; /* Adjusted margin */
+        margin-bottom: 30px; /* Adjusted margin */
     }
 
+    /* About Section */
     .about-section {
-        margin-top: auto;
+        margin-top: 40px; /* Adjusted margin */
         max-width: 100%;
-        margin-bottom: 100px;
+        margin-bottom: 60px; /* Adjusted margin */
     }
 
-    .about-box{
+    .about-box {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-bottom: 100px;
+        margin-bottom: 60px; /* Adjusted margin */
     }
 
-    .blog-posts{
+    /* Blog Posts */
+    .blog-posts {
         display: grid;
-        direction: ltr;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablet view */
+        gap: 20px; /* Added gap for better spacing */
         justify-content: center;
     }
 
@@ -872,7 +1794,7 @@ footer {
 
     .portfolio-picture {
         max-width: 100%;
-        height: auto; /* Added to maintain aspect ratio */
+        height: auto; /* Maintain aspect ratio */
     }
 
     .column {
@@ -880,26 +1802,37 @@ footer {
     }
 
     .vertical-line {
-        display: none;
+        display: none; /* Hide vertical line on tablets */
     }
 
+    /* Back Button */
     .back-button {
         background-color: transparent;
-        color: #000;
+        color: #2c3e50; /* Darker gray for better readability */
         border: none;
         display: flex;
         align-items: center;
         cursor: pointer;
         position: absolute;
-        left: 10px;
+        left: 20px; /* Adjusted position */
+        transition: color 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .back-button:hover {
+        color: #3182ce; /* Soft blue for interactivity */
     }
 
     .back-button svg {
         margin-right: 8px;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
     }
 
-    .contact-form{
+    .back-button:hover svg {
+        transform: translateX(-5px); /* Slight shift on hover */
+    }
+
+    /* Contact Form */
+    .contact-form {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -907,28 +1840,50 @@ footer {
     }
 
     .contact-container {
-        margin-top: auto; /* Pushes the container to the bottom of its flex parent */
-        max-height: 700px; /* Limits the height of the container */
-        margin-bottom: 200px; /* Space between the container and the footer */
+        margin-top: 40px; /* Adjusted margin */
+        max-height: none; /* Remove fixed height */
+        margin-bottom: 60px; /* Adjusted margin */
         display: flex;
         flex-direction: column; /* Ensure content aligns correctly */
     }
 
+    /* Map Container */
     .map-container iframe {
         height: 300px;
-        width: 100%; /* Added to maintain aspect ratio */
+        width: 100%; /* Maintain aspect ratio */
     }
 
+    /* License Container */
     .license-container h1 {
-        font-size: 28px;
+        font-size: 2rem; /* Adjusted font size for better readability */
     }
 
     .license-container h2 {
-        font-size: 22px;
+        font-size: 1.75rem; /* Adjusted font size for better readability */
     }
 
     .license-container p {
-        font-size: 14px;
+        font-size: 1rem; /* Adjusted font size for better readability */
+    }
+
+    /* Add a subtle animation to elements on page load */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .contact-container,
+    .license-container,
+    .blog-container,
+    .research-container,
+    .about-section {
+        animation: fadeInUp 0.6s ease-out; /* Smooth fade-in animation */
     }
 }
 
