@@ -7,36 +7,45 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
     <script defer src="scripts.js"></script> <!-- Link to your JavaScript file -->
     <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png"> <!-- Link to your favicon -->
+    <!-- Add Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
+            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath">
+                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath" class="logo-img">
                 </a>
             </div>
+
+            <!-- Navigation Menu -->
             <nav class="nav-menu">
-                <a href="about.html">About</a>
-                <a href="research.html">Research</a>
-                <a href="blog.html">Blog</a>
-                <a href="publications.html">Publications</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="publications.html" class="nav-link">Publications</a>
             </nav>
+
+            <!-- Hamburger Menu for Mobile -->
             <div class="hamburger-menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+
+            <!-- Social Media Icons -->
             <div class="social-media">
                 <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
-                    <img src="images/github.png" alt="GitHub">
+                    <img src="images/github.png" alt="GitHub" class="social-icon-img">
                 </a>
                 <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
-                    <img src="images/linkedin.png" alt="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon-img">
                 </a>
                 <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
-                    <img src="images/twitter.png" alt="Twitter">
+                    <img src="images/twitter.png" alt="Twitter" class="social-icon-img">
                 </a>
             </div>
         </div>
@@ -45,18 +54,22 @@
     <!-- Main Section -->
     <main>
         <div class="welcome-section">
-            <h1 style="font-family: 'Lucida Handwriting', cursive">Rohan Nath, MS</h1>
-            <p>Welcome to my portfolio, <span id="animated-text" class="typewriter-text"></span></p>
+            <!-- Animated Heading -->
+            <h1 class="welcome-heading">Rohan Nath, MS</h1>
+            <!-- Typewriter Effect for Subheading -->
+            <p class="welcome-text">Welcome to my portfolio, <span id="animated-text" class="typewriter-text"></span></p>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rohan Nath. All rights reserved.</p>
+            <!-- Copyright Notice -->
+            <p class="footer-text">&copy; 2024 Rohan Nath. All rights reserved.</p>
+            <!-- Footer Links -->
             <div class="footer-links">
-                <a href="license.html">License</a>
-                <a href="contact.html">Contact</a>
+                <a href="license.html" class="footer-link">License</a>
+                <a href="contact.html" class="footer-link">Contact</a>
             </div>
         </div>
     </footer>

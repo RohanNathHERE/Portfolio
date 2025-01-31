@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts | Rohan Nath</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <script defer src="scripts.js"></script> <!-- Link to your JavaScript file -->
-    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png"> <!-- Link to your favicon -->
+    <title>Contact | Rohan Nath</title>
+    
+    <!-- SEO: Meta Description & Keywords -->
+    <meta name="description" content="Contact Rohan Nath for inquiries related to GPCRs, pharmacology, pharmacogenomics, and evolutionary biology research.">
+    <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, contact">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JavaScript -->
+    <script defer src="scripts.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png">
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
+            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath">
+                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
                 </a>
             </div>
+
+            <!-- Navigation Menu -->
             <nav class="nav-menu">
-                <a href="about.html">About</a>
-                <a href="research.html">Research</a>
-                <a href="blog.html">Blog</a>
-                <a href="publications.html">Publications</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="publications.html" class="nav-link">Publications</a>
             </nav>
-            <div class="hamburger-menu">
+
+            <!-- Hamburger Menu (for mobile) -->
+            <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+
+            <!-- Social Media Icons -->
             <div class="social-media">
-                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
-                    <img src="images/github.png" alt="GitHub">
+                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
+                    <img src="images/github.png" alt="GitHub Icon" class="social-icon-img">
                 </a>
-                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
-                    <img src="images/linkedin.png" alt="LinkedIn">
+                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-icon-img">
                 </a>
-                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
-                    <img src="images/twitter.png" alt="Twitter">
+                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
+                    <img src="images/twitter.png" alt="Twitter Icon" class="social-icon-img">
                 </a>
             </div>
         </div>
@@ -47,11 +67,11 @@
         <div class="contact-container">
             <!-- Contact Information -->
             <div class="contact-info">
-                <h2>Contact Information</h2>
-                <p><strong>Email:</strong> rohann20@iiserbpr.ac.in </p>
-                <p><strong>Phone:</strong> +91-7847882528 </p>
-                <p><strong>Office:</strong> Indian Institute of Science Education and Research (Transit Campus)</p>
-                <p><strong>Address:</strong> Govt. ITI Building Engg. School Junction, Gajapati Nagar, Berhampur, Odisha 760010 </p>
+                <h2 class="contact-info-title">Contact Information</h2>
+                <p class="contact-info-text"><strong>Email:</strong> rohann20@iiserbpr.ac.in</p>
+                <p class="contact-info-text"><strong>Phone:</strong> +91-7847882528</p>
+                <p class="contact-info-text"><strong>Office:</strong> Indian Institute of Science Education and Research (Transit Campus)</p>
+                <p class="contact-info-text"><strong>Address:</strong> Govt. ITI Building Engg. School Junction, Gajapati Nagar, Berhampur, Odisha 760010</p>
             </div>
 
             <!-- Vertical Line -->
@@ -59,39 +79,48 @@
 
             <!-- Contact Form -->
             <div class="contact-form">
-                <h2>Send a Message</h2>
-                <form action="mailto:rohann20@iiserbpr.ac.in" method="POST" enctype="text/plain" onsubmit="return validateForm()"></form>
+                <h2 class="contact-form-title">Send a Message</h2>
+                <form action="mailto:rohann20@iiserbpr.ac.in" method="POST" enctype="text/plain" onsubmit="return validateForm()">
                     <div class="form-group">
-                        <label for="name" style="text-align: left;">Full Name:</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name" class="form-label">Full Name:</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <label for="email" style="text-align: left;">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <label for="message" style="text-align: left;">Message:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message" class="form-label">Message:</label>
+                        <textarea id="message" name="message" rows="5" class="form-textarea" required></textarea>
                     </div>
-                    <button type="submit">Send</button>
+                    <button type="submit" class="form-button">Send</button>
                 </form>
             </div>
         </div>
 
         <!-- Office Location Map -->
         <div class="map-container">
-            <h2>Office Location</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15061.408415029606!2d84.8275064!3d19.3105216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d509c85462089%3A0x2d772056ef73e7e7!2sIndian%20Institute%20of%20Science%20Education%20and%20Research%20Berhampur!5e0!3m2!1sen!2sin!4v1724602909634!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <h2 class="map-title">Office Location</h2>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15061.408415029606!2d84.8275064!3d19.3105216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d509c85462089%3A0x2d772056ef73e7e7!2sIndian%20Institute%20of%20Science%20Education%20and%20Research%20Berhampur!5e0!3m2!1sen!2sin!4v1724602909634!5m2!1sen!2sin" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="map-iframe">
+            </iframe>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rohan Nath. All rights reserved.</p>
+            <p class="footer-text">&copy; 2024 Rohan Nath. All rights reserved.</p>
             <div class="footer-links">
-                <a href="license.html">License</a>
-                <a href="contact.html">Contact</a>
+                <a href="license.html" class="footer-link">License</a>
+                <a href="contact.html" class="footer-link">Contact</a>
             </div>
         </div>
     </footer>

@@ -4,39 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Rohan Nath</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <script defer src="scripts.js"></script> <!-- Link to your JavaScript file -->
-    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png"> <!-- Link to your favicon -->
+    
+    <!-- SEO: Meta Description & Keywords -->
+    <meta name="description" content="Explore the EvoGenomics blog by Rohan Nath, covering topics in science, law, and society, with a focus on GPCRs, drug design, and scientific ethics.">
+    <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, research, blog, science, law, society">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JavaScript -->
+    <script defer src="scripts.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png">
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
+            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath">
+                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
                 </a>
             </div>
+
+            <!-- Navigation Menu -->
             <nav class="nav-menu">
-                <a href="about.html">About</a>
-                <a href="research.html">Research</a>
-                <a href="blog.html">Blog</a>
-                <a href="publications.html">Publications</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="publications.html" class="nav-link">Publications</a>
             </nav>
-            <div class="hamburger-menu">
+
+            <!-- Hamburger Menu (for mobile) -->
+            <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+
+            <!-- Social Media Icons -->
             <div class="social-media">
-                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
-                    <img src="images/github.png" alt="GitHub">
+                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
+                    <img src="images/github.png" alt="GitHub Icon" class="social-icon-img">
                 </a>
-                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
-                    <img src="images/linkedin.png" alt="LinkedIn">
+                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-icon-img">
                 </a>
-                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
-                    <img src="images/twitter.png" alt="Twitter">
+                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
+                    <img src="images/twitter.png" alt="Twitter Icon" class="social-icon-img">
                 </a>
             </div>
         </div>
@@ -44,18 +64,19 @@
 
     <!-- Blog Header -->
     <header class="blog-header">
-        <h1>Blog</h1>
-        <p>Welcome to the EvoGenomics blog, where we explore a wide array of topics spanning the realms of science, law, and society. Our blog offers insights into the latest research, scientific advancements, and emerging discoveries across various fields. From the intricate world of G Protein-Coupled Receptors (GPCRs) to broader discussions on drug design, scientific ethics, and the impact of legal and societal issues on scientific progress, we aim to provide a comprehensive perspective on these dynamic areas. Join us as we delve into these critical issues and their implications for the future of science and society.</p>
+        <h1 class="blog-header-title">Blog</h1>
+        <p class="blog-header-description">
+            Welcome to the EvoGenomics blog, where we explore a wide array of topics spanning the realms of science, law, and society. Our blog offers insights into the latest research, scientific advancements, and emerging discoveries across various fields. From the intricate world of G Protein-Coupled Receptors (GPCRs) to broader discussions on drug design, scientific ethics, and the impact of legal and societal issues on scientific progress, we aim to provide a comprehensive perspective on these dynamic areas. Join us as we delve into these critical issues and their implications for the future of science and society.
+        </p>
     </header>
 
-    <!-- Main Content -->
     <!-- Main Content -->
     <main>
         <div class="blog-container">
             <!-- Blog Posts -->
             <section class="blog-posts">
                 <div class="update-message">
-                    <h1><strong>We will update soon!</strong></h1>
+                    <h1 class="update-message-title"><strong>We will update soon!</strong></h1>
                 </div>
             </section>
         </div>
@@ -64,10 +85,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rohan Nath. All rights reserved.</p>
+            <p class="footer-text">&copy; 2024 Rohan Nath. All rights reserved.</p>
             <div class="footer-links">
-                <a href="license.html">License</a>
-                <a href="contact.html">Contact</a>
+                <a href="license.html" class="footer-link">License</a>
+                <a href="contact.html" class="footer-link">Contact</a>
             </div>
         </div>
     </footer>

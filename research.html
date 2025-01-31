@@ -4,39 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research | Rohan Nath</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <script defer src="scripts.js"></script> <!-- Link to your JavaScript file -->
-    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png"> <!-- Link to your favicon -->
+    
+    <!-- SEO: Meta Description & Keywords -->
+    <meta name="description" content="Research in comparative and evolutionary genomics by Rohan Nath, focusing on GPCRs, pharmacogenomics, and personalized medicine.">
+    <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, research, comparative genomics, evolutionary genomics">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JavaScript -->
+    <script defer src="scripts.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png">
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
+            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath">
+                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
                 </a>
             </div>
+
+            <!-- Navigation Menu -->
             <nav class="nav-menu">
-                <a href="about.html">About</a>
-                <a href="research.html">Research</a>
-                <a href="blog.html">Blog</a>
-                <a href="publications.html">Publications</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="publications.html" class="nav-link">Publications</a>
             </nav>
-            <div class="hamburger-menu">
+
+            <!-- Hamburger Menu (for mobile) -->
+            <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+
+            <!-- Social Media Icons -->
             <div class="social-media">
-                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
-                    <img src="images/github.png" alt="GitHub">
+                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
+                    <img src="images/github.png" alt="GitHub Icon" class="social-icon-img">
                 </a>
-                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
-                    <img src="images/linkedin.png" alt="LinkedIn">
+                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-icon-img">
                 </a>
-                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
-                    <img src="images/twitter.png" alt="Twitter">
+                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
+                    <img src="images/twitter.png" alt="Twitter Icon" class="social-icon-img">
                 </a>
             </div>
         </div>
@@ -45,17 +65,27 @@
     <!-- Main Section -->
     <main>
         <div class="research-container">
+            <!-- Research Content -->
             <div class="research-content">
-                <h1>Comparative and Evolutionary Genomics</h1>
-                <p>
+                <h1 class="research-title">Comparative and Evolutionary Genomics</h1>
+                <p class="research-text">
                     Comparative and evolutionary genomics is a field of study that focuses on comparing the genomes of different species to understand their evolutionary relationships and functional differences. This approach provides insights into the mechanisms of genome evolution, gene function, and the impact of genetic changes on adaptation and speciation.
                 </p>
-                <p>
+                <p class="research-text">
                     By analyzing the similarities and differences in gene sequences, gene expression, and genomic structures across species, researchers can uncover the evolutionary pressures that have shaped the genomes of various organisms. This field integrates data from various sources, including whole-genome sequences, transcriptomic data, and evolutionary models, to build comprehensive views of genome evolution.
                 </p>
             </div>
+
+            <!-- Research Video -->
             <div class="research-video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/U5CHfCIOPGI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/U5CHfCIOPGI" 
+                    title="Comparative and Evolutionary Genomics" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    class="research-video-iframe">
+                </iframe>
             </div>
         </div>
     </main>
@@ -63,10 +93,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rohan Nath. All rights reserved.</p>
+            <p class="footer-text">&copy; 2024 Rohan Nath. All rights reserved.</p>
             <div class="footer-links">
-                <a href="license.html">License</a>
-                <a href="contact.html">Contact</a>
+                <a href="license.html" class="footer-link">License</a>
+                <a href="contact.html" class="footer-link">Contact</a>
             </div>
         </div>
     </footer>
