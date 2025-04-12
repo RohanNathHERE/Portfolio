@@ -1,414 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Rohan Nath</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Rohan Nath</title>
+  <meta name="description" content="Portfolio of Rohan Nath, MS, specializing in bioinformatics and GPCRs.">
+  <meta name="keywords" content="Rohan Nath, bioinformatics, GPCRs, pharmacogenomics, evolutionary biology">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            /* Bioinformatics SVG Background with Gradient Overlay */
-            background: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95)),
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
-            color: #f8f8f2;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.5;
-            font-weight: 400;
-        }
+    body {
+      background: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95)),
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
+      color: #f8f8f2;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      font-weight: 400;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        /* Header */
-        .header {
-            background: rgba(29, 31, 42, 0.9);
-            padding: 1.5rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #6272a4;
-        }
+    /* Header */
+    .header {
+      background: rgba(29, 31, 42, 0.9);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #6272a4;
+    }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .logo-img {
-            height: 48px;
-            transition: transform 0.3s ease;
-        }
+    .logo-img {
+      height: 64px;
+      transition: transform 0.3s ease;
+    }
 
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
 
-        .nav-menu {
-            display: flex;
-            gap: 1.5rem;
-        }
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
 
-        .nav-link {
-            color: #f8f8f2;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 0.5rem 0;
-        }
+    .nav-link {
+      color: #f8f8f2;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+      display: block;
+      padding: 0.5rem 0;
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #50fa7b;
-            transition: width 0.3s ease;
-        }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #50fa7b;
+      transition: width 0.3s ease;
+    }
 
-        .nav-link:hover {
-            color: #50fa7b;
-        }
+    .nav-link:hover {
+      color: #50fa7b;
+    }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
-        .hamburger-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1001;
-        }
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
 
-        .hamburger-menu span {
-            width: 25px;
-            height: 3px;
-            background-color: #f8f8f2;
-            transition: all 0.3s ease;
-        }
+    .hamburger-menu span {
+      width: 25px;
+      height: 3px;
+      background-color: #f8f8f2;
+      transition: all 0.3s ease;
+    }
 
-        .hamburger-menu.open span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
+    .hamburger-menu.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
 
-        .hamburger-menu.open span:nth-child(2) {
-            opacity: 0;
-        }
+    .hamburger-menu.open span:nth-child(2) {
+      opacity: 0;
+    }
 
-        .hamburger-menu.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
+    .hamburger-menu.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
 
-        .social-media {
-            display: flex;
-            gap: 1rem;
-        }
+    .social-media {
+      display: flex;
+      gap: 1rem;
+    }
 
-        .social-img {
-            width: 22px;
-            height: 22px;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
+    .social-img {
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1); /* Convert icons to white */
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
 
-        .social-icon:hover .social-img {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
+    .social-icon:hover .social-img {
+      transform: scale(1.1);
+      filter: brightness(0) invert(1) brightness(1.2);
+    }
 
-        /* Main Section */
-        .main {
-            min-height: calc(100vh - 180px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
+    /* Main Section */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
 
-        .welcome-section {
-            text-align: center;
-            animation: fadeIn 1s ease-in-out;
-            max-width: 1000px;
-        }
+    .welcome-section {
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      max-width: 1000px;
+    }
 
-        .welcome-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #f8f8f2; /* White for name */
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
+    .welcome-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #f8f8f2;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
 
-        .welcome-text {
-            font-size: 1.3rem;
-            color: #f8f8f2;
-            font-weight: 400;
-            display: inline;
-            vertical-align: middle;
-        }
+    .welcome-text {
+      font-size: 1.3rem;
+      color: #f8f8f2;
+      font-weight: 400;
+      display: inline;
+      vertical-align: middle;
+    }
 
-        .typewriter-text {
-            color: #50fa7b;
-            border-right: 2px solid #50fa7b;
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline;
-            font-weight: 500;
-            font-size: 1.3rem;
-            vertical-align: middle;
-        }
+    .typewriter-text {
+      color: #50fa7b;
+      border-right: 2px solid #50fa7b;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline;
+      font-weight: 500;
+      font-size: 1.3rem;
+      vertical-align: middle;
+    }
 
-        /* Footer */
-        .footer {
-            background-color: #1d1f2a;
-            padding: 1rem;
-            text-align: center;
-            border-top: 1px solid #6272a4;
-        }
+    /* Footer */
+    .footer {
+      background-color: #1d1f2a;
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid #6272a4;
+      width: 100%;
+    }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .footer-text {
-            font-size: 0.85rem;
-            color: #6272a4;
-            font-weight: 400;
-        }
+    .footer-text {
+      font-size: 0.85rem;
+      color: #6272a4;
+      font-weight: 400;
+    }
 
-        .footer-links {
-            margin-top: 0.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
+    .footer-links {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
 
-        .footer-link {
-            color: #bd93f9;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+    .footer-link {
+      color: #bd93f9;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-        .footer-link:hover {
-            color: #50fa7b;
-        }
+    .footer-link:hover {
+      color: #50fa7b;
+    }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        @keyframes slideIn {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: #1d1f2a;
-                padding: 1rem;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #1d1f2a;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
 
-            .nav-menu.active {
-                display: flex;
-            }
+      .nav-menu.active {
+        display: flex;
+      }
 
-            .hamburger-menu {
-                display: flex;
-            }
+      .hamburger-menu {
+        display: flex;
+      }
 
-            .welcome-heading {
-                font-size: 2.2rem;
-            }
+      .logo-img {
+        height: 48px;
+      }
 
-            .welcome-text, .typewriter-text {
-                font-size: 1rem;
-            }
+      .welcome-heading {
+        font-size: 2.2rem;
+      }
 
-            .social-media {
-                gap: 0.5rem;
-            }
+      .welcome-text, .typewriter-text {
+        font-size: 1rem;
+      }
 
-            .social-img {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    </style>
+      .social-media {
+        gap: 0.5rem;
+      }
+
+      .social-img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
-                </a>
-            </div>
-            <nav class="nav-menu">
-                <a href="about.html" class="nav-link">About</a>
-                <a href="research.html" class="nav-link">Research</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="publications.html" class="nav-link">Publications</a>
-            </nav>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="social-media">
-                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
-                    <img src="images/github.png" alt="GitHub" class="social-img">
-                </a>
-                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="social-img">
-                </a>
-                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
-                    <img src="images/twitter.png" alt="Twitter" class="social-img">
-                </a>
-            </div>
-        </div>
-    </header>
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
+        </a>
+      </div>
+      <nav class="nav-menu">
+        <a href="about.html" class="nav-link">About</a>
+        <a href="research.html" class="nav-link">Research</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="publications.html" class="nav-link">Publications</a>
+      </nav>
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="social-media">
+        <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
+          <img src="images/github.png" alt="GitHub" class="social-img">
+        </a>
+        <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
+          <img src="images/linkedin.png" alt="LinkedIn" class="social-img">
+        </a>
+        <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
+          <img src="images/twitter.png" alt="Twitter" class="social-img">
+        </a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Main Section -->
-    <main class="main">
-        <section class="welcome-section">
-            <h1 class="welcome-heading">Rohan Nath, MS</h1>
-            <p class="welcome-text">Welcome to my portfolio, <span id="animated-text" class="typewriter-text"></span></p>
-        </section>
-    </main>
+  <!-- Main Section -->
+  <main>
+    <section class="welcome-section">
+      <h1 class="welcome-heading">Rohan Nath, MS</h1>
+      <p class="welcome-text">Welcome to my portfolio, <span id="animated-text" class="typewriter-text"></span></p>
+    </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 Rohan Nath. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="license.html" class="footer-link">License</a>
-                <a href="contact.html" class="footer-link">Contact</a>
-            </div>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2024 Rohan Nath. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="license.html" class="footer-link">License</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        // --- Typewriter Effect ---
-        const texts = [
-            "where I explore the evolution and pharmacology of G Protein-Coupled Receptors (GPCRs).",
-            "where I investigate the lineage-specific expansion of genes.",
-            "where I conduct phylogenetic studies.",
-            "where I study protein domain and structure.",
-            "where I learn new R scripts and explore innovative ways of visualization."
-        ];
+  <script>
+    // --- Typewriter Effect ---
+    const texts = [
+      "where I explore the evolution and pharmacology of G Protein-Coupled Receptors (GPCRs).",
+      "where I investigate the lineage-specific expansion of genes.",
+      "where I conduct phylogenetic studies.",
+      "where I study protein domain and structure.",
+      "where I learn new R scripts and explore innovative ways of visualization."
+    ];
 
-        let index = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const animatedTextElement = document.getElementById('animated-text');
+    let index = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const animatedTextElement = document.getElementById('animated-text');
 
-        if (animatedTextElement) {
-            const typeSpeedBase = 60;
-            const deleteSpeed = 40;
-            const pauseAfterTyping = 2000;
-            const pauseAfterDeleting = 600;
+    if (animatedTextElement) {
+      const typeSpeedBase = 60;
+      const deleteSpeed = 40;
+      const pauseAfterTyping = 2000;
+      const pauseAfterDeleting = 600;
 
-            const typeWriter = () => {
-                const currentText = texts[index];
-                animatedTextElement.style.borderRight = '2px solid #50fa7b';
+      const typeWriter = () => {
+        const currentText = texts[index];
+        animatedTextElement.style.borderRight = '2px solid #50fa7b';
 
-                if (!isDeleting) {
-                    if (charIndex < currentText.length) {
-                        animatedTextElement.textContent = currentText.substring(0, charIndex + 1);
-                        charIndex++;
-                        setTimeout(typeWriter, typeSpeedBase);
-                    } else {
-                        animatedTextElement.style.borderRight = 'none';
-                        isDeleting = true;
-                        setTimeout(typeWriter, pauseAfterTyping);
-                    }
-                } else {
-                    if (charIndex > 0) {
-                        animatedTextElement.textContent = currentText.substring(0, charIndex - 1);
-                        charIndex--;
-                        setTimeout(typeWriter, deleteSpeed);
-                    } else {
-                        isDeleting = false;
-                        index = (index + 1) % texts.length;
-                        setTimeout(typeWriter, pauseAfterDeleting);
-                    }
-                }
-            };
-
-            typeWriter();
-
-            // Cursor animation
-            const cursorBlink = () => {
-                animatedTextElement.style.borderRightColor =
-                    animatedTextElement.style.borderRightColor === 'transparent' ? '#50fa7b' : 'transparent';
-                requestAnimationFrame(cursorBlink);
-            };
-            requestAnimationFrame(cursorBlink);
+        if (!isDeleting) {
+          if (charIndex < currentText.length) {
+            animatedTextElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            setTimeout(typeWriter, typeSpeedBase);
+          } else {
+            animatedTextElement.style.borderRight = 'none';
+            isDeleting = true;
+            setTimeout(typeWriter, pauseAfterTyping);
+          }
+        } else {
+          if (charIndex > 0) {
+            animatedTextElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(typeWriter, deleteSpeed);
+          } else {
+            isDeleting = false;
+            index = (index + 1) % texts.length;
+            setTimeout(typeWriter, pauseAfterDeleting);
+          }
         }
+      };
 
-        // --- Hamburger Menu ---
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('.nav-menu');
+      typeWriter();
 
-        if (hamburgerMenu && navMenu) {
-            hamburgerMenu.addEventListener('click', () => {
-                const isActive = navMenu.classList.toggle('active');
-                hamburgerMenu.classList.toggle('open');
+      // Cursor animation
+      const cursorBlink = () => {
+        animatedTextElement.style.borderRightColor =
+          animatedTextElement.style.borderRightColor === 'transparent' ? '#50fa7b' : 'transparent';
+        requestAnimationFrame(cursorBlink);
+      };
+      requestAnimationFrame(cursorBlink);
+    }
 
-                // Animate menu items
-                const navLinks = navMenu.querySelectorAll('.nav-link');
-                navLinks.forEach((link, i) => {
-                    link.style.animation = isActive
-                        ? `slideIn 0.3s ease forwards ${i * 0.1}s`
-                        : 'none';
-                });
-            });
+    // --- Hamburger Menu ---
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
 
-            // Close on outside click
-            document.addEventListener('click', (e) => {
-                if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
-                    navMenu.classList.remove('active');
-                    hamburgerMenu.classList.remove('open');
-                }
-            });
+    if (hamburgerMenu && navMenu) {
+      hamburgerMenu.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
+        hamburgerMenu.classList.toggle('open');
 
-            // Keyboard accessibility
-            hamburgerMenu.setAttribute('role', 'button');
-            hamburgerMenu.setAttribute('aria-label', 'Toggle navigation menu');
-            hamburgerMenu.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    hamburgerMenu.click();
-                }
-            });
+        // Animate menu items
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach((link, i) => {
+          link.style.animation = isActive
+            ? `slideIn 0.3s ease forwards ${i * 0.1}s`
+            : 'none';
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
+          navMenu.classList.remove('active');
+          hamburgerMenu.classList.remove('open');
         }
-    </script>
+      });
+
+      // Keyboard accessibility
+      hamburgerMenu.setAttribute('role', 'button');
+      hamburgerMenu.setAttribute('aria-label', 'Toggle navigation menu');
+      hamburgerMenu.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          hamburgerMenu.click();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
