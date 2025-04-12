@@ -66,7 +66,6 @@
       font-weight: 500;
       position: relative;
       transition: color 0.3s ease;
-      display: block;
       padding: 0.5rem 0;
     }
 
@@ -124,7 +123,7 @@
     .social-img {
       width: 28px;
       height: 28px;
-      filter: brightness(0) invert(1); /* Convert icons to white */
+      filter: brightness(0) invert(1);
       transition: transform 0.3s ease, filter 0.3s ease;
     }
 
@@ -161,19 +160,18 @@
       font-size: 1.3rem;
       color: #f8f8f2;
       font-weight: 400;
-      display: inline;
-      vertical-align: middle;
+      display: block;
     }
 
     .typewriter-text {
       color: #50fa7b;
       border-right: 2px solid #50fa7b;
-      white-space: nowrap;
       overflow: hidden;
-      display: inline;
+      display: inline-block;
       font-weight: 500;
       font-size: 1.3rem;
-      vertical-align: middle;
+      vertical-align: top;
+      min-height: 1.3rem;
     }
 
     /* Footer */
@@ -258,6 +256,14 @@
 
       .welcome-text, .typewriter-text {
         font-size: 1rem;
+        display: block;
+        width: 100%;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+
+      .typewriter-text {
+        min-height: 3rem;
       }
 
       .social-media {
@@ -286,19 +292,19 @@
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="publications.html" class="nav-link">Publications</a>
       </nav>
-      <div class="hamburger-menu">
+      <div class="hamburger-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <div class="social-media">
-        <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon">
+        <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
           <img src="images/github.png" alt="GitHub" class="social-img">
         </a>
-        <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon">
+        <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
           <img src="images/linkedin.png" alt="LinkedIn" class="social-img">
         </a>
-        <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon">
+        <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
           <img src="images/twitter.png" alt="Twitter" class="social-img">
         </a>
       </div>
@@ -376,8 +382,12 @@
 
       // Cursor animation
       const cursorBlink = () => {
-        animatedTextElement.style.borderRightColor =
-          animatedTextElement.style.borderRightColor === 'transparent' ? '#50fa7b' : 'transparent';
+        if (!isDeleting && charIndex === texts[index].length) {
+          animatedTextElement.style.borderRight = 'none';
+        } else {
+          animatedTextElement.style.borderRightColor =
+            animatedTextElement.style.borderRightColor === 'transparent' ? '#50fa7b' : 'transparent';
+        }
         requestAnimationFrame(cursorBlink);
       };
       requestAnimationFrame(cursorBlink);
@@ -410,8 +420,6 @@
       });
 
       // Keyboard accessibility
-      hamburgerMenu.setAttribute('role', 'button');
-      hamburgerMenu.setAttribute('aria-label', 'Toggle navigation menu');
       hamburgerMenu.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
