@@ -6,8 +6,9 @@
   <title>Publications | Rohan Nath</title>
   <meta name="description" content="Explore the publications of Rohan Nath, focusing on GPCRs, pharmacology, pharmacogenomics, and evolutionary biology.">
   <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, publications, research">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
+    /* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -16,15 +17,17 @@
 
     body {
       background: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95)),
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
       color: #f8f8f2;
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
+      line-height: 1.5;
+      font-weight: 400;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
+    /* Header */
     .header {
       background: rgba(29, 31, 42, 0.9);
       padding: 1.5rem 2rem;
@@ -43,7 +46,7 @@
     }
 
     .logo-img {
-      height: 48px;
+      height: 64px;
       transition: transform 0.3s ease;
     }
 
@@ -118,16 +121,18 @@
     }
 
     .social-img {
-      width: 22px;
-      height: 22px;
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1);
       transition: transform 0.3s ease, filter 0.3s ease;
     }
 
     .social-icon:hover .social-img {
       transform: scale(1.1);
-      filter: brightness(1.2);
+      filter: brightness(0) invert(1) brightness(1.2);
     }
 
+    /* Main Section */
     main {
       flex: 1;
       max-width: 1200px;
@@ -149,7 +154,7 @@
 
     .year-heading {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 3.5rem;
       color: #50fa7b;
       margin-bottom: 1.5rem;
       border-bottom: 1px solid #6272a4;
@@ -176,7 +181,7 @@
 
     .publication-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: #f8f8f2;
       margin-bottom: 0.5rem;
       font-weight: 500;
@@ -185,7 +190,7 @@
     .publication-link {
       color: #bd93f9;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       transition: color 0.3s ease;
     }
 
@@ -211,6 +216,7 @@
       transform: scale(1.05);
     }
 
+    /* Footer */
     .footer {
       background-color: #1d1f2a;
       padding: 1rem;
@@ -249,6 +255,7 @@
       color: #50fa7b;
     }
 
+    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -259,6 +266,7 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
+    /* Responsive Design */
     @media (max-width: 768px) {
       .nav-menu {
         display: none;
@@ -280,12 +288,16 @@
         display: flex;
       }
 
+      .logo-img {
+        height: 48px;
+      }
+
       .publications-container {
         padding: 1.5rem;
       }
 
       .year-heading {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
       }
 
       .publication-item {
@@ -295,30 +307,35 @@
       }
 
       .publication-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
 
       .publication-link {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
 
       .publication-image-img {
         max-width: 50%;
       }
 
+      .social-media {
+        gap: 0.5rem;
+      }
+
       .social-img {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
   <header class="header">
     <div class="nav-container">
       <div class="logo">
         <a href="index.html">
-          <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
+          <img src="images/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
         </a>
       </div>
       <nav class="nav-menu">
@@ -327,25 +344,26 @@
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="publications.html" class="nav-link">Publications</a>
       </nav>
-      <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
+      <div class="hamburger-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <div class="social-media">
         <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
-          <img src="images/github.png" alt="GitHub Icon" class="social-img">
+          <img src="images/github.png" alt="GitHub" class="social-img">
         </a>
         <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
-          <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-img">
+          <img src="images/linkedin.png" alt="LinkedIn" class="social-img">
         </a>
         <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
-          <img src="images/twitter.png" alt="Twitter Icon" class="social-img">
+          <img src="images/twitter.png" alt="Twitter" class="social-img">
         </a>
       </div>
     </div>
   </header>
 
+  <!-- Main Section -->
   <main>
     <div class="publications-container">
       <div class="year-section">
@@ -365,6 +383,7 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p class="footer-text">© 2024 Rohan Nath. All rights reserved.</p>
@@ -376,37 +395,40 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamburgerMenu = document.querySelector('.hamburger-menu');
-      const navMenu = document.querySelector('.nav-menu');
+    // --- Hamburger Menu ---
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
 
-      if (hamburgerMenu && navMenu) {
-        hamburgerMenu.addEventListener('click', () => {
-          const isActive = navMenu.classList.toggle('active');
-          hamburgerMenu.classList.toggle('open');
-          const navLinks = navMenu.querySelectorAll('.nav-link');
-          navLinks.forEach((link, i) => {
-            link.style.animation = isActive
-              ? `slideIn 0.3s ease forwards ${i * 0.1}s`
-              : 'none';
-          });
-        });
+    if (hamburgerMenu && navMenu) {
+      hamburgerMenu.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
+        hamburgerMenu.classList.toggle('open');
 
-        document.addEventListener('click', (e) => {
-          if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            hamburgerMenu.classList.remove('open');
-          }
+        // Animate menu items
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach((link, i) => {
+          link.style.animation = isActive
+            ? `slideIn 0.3s ease forwards ${i * 0.1}s`
+            : 'none';
         });
+      });
 
-        hamburgerMenu.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            hamburgerMenu.click();
-          }
-        });
-      }
-    });
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
+          navMenu.classList.remove('active');
+          hamburgerMenu.classList.remove('open');
+        }
+      });
+
+      // Keyboard accessibility
+      hamburgerMenu.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          hamburgerMenu.click();
+        }
+      });
+    }
   </script>
 </body>
 </html>
