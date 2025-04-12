@@ -1,104 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | Rohan Nath</title>
-    
-    <!-- SEO: Meta Description & Keywords -->
-    <meta name="description" content="Research in comparative and evolutionary genomics by Rohan Nath, focusing on GPCRs, pharmacogenomics, and personalized medicine.">
-    <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, research, comparative genomics, evolutionary genomics">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research | Rohan Nath</title>
+  <meta name="description" content="Research in comparative and evolutionary genomics by Rohan Nath, focusing on GPCRs, pharmacogenomics, and personalized medicine.">
+  <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, research, comparative genomics, evolutionary genomics">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+    body {
+      background: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95)),
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
+      color: #f8f8f2;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-    <!-- JavaScript -->
-    <script defer src="scripts.js"></script>
+    .header {
+      background: rgba(29, 31, 42, 0.9);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #6272a4;
+    }
 
-    <!-- Favicon -->
-    <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png">
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    <!-- Google Fonts for better typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    .logo-img {
+      height: 48px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: #f8f8f2;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #50fa7b;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #50fa7b;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger-menu span {
+      width: 25px;
+      height: 3px;
+      background-color: #f8f8f2;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-menu.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger-menu.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .social-media {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-img {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .social-icon:hover .social-img {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .research-container {
+      display: flex;
+      gap: 2rem;
+      background: rgba(29, 31, 42, 0.7);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .research-content {
+      flex: 2;
+    }
+
+    .research-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #f8f8f2;
+      margin-bottom: 1.5rem;
+    }
+
+    .research-text {
+      font-size: 1rem;
+      color: #f8f8f2;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+
+    .research-video {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .research-video-iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer {
+      background-color: #1d1f2a;
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid #6272a4;
+      width: 100%;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: #6272a4;
+      font-weight: 400;
+    }
+
+    .footer-links {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .footer-link {
+      color: #bd93f9;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #50fa7b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #1d1f2a;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hamburger-menu {
+        display: flex;
+      }
+
+      .research-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+      }
+
+      .research-title {
+        font-size: 2rem;
+      }
+
+      .research-text {
+        font-size: 0.95rem;
+      }
+
+      .research-video-iframe {
+        width: 100%;
+      }
+
+      .social-img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header>
-        <div class="nav-container">
-            <!-- Logo -->
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
-                </a>
-            </div>
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
+        </a>
+      </div>
+      <nav class="nav-menu">
+        <a href="about.html" class="nav-link">About</a>
+        <a href="research.html" class="nav-link">Research</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="publications.html" class="nav-link">Publications</a>
+      </nav>
+      <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="social-media">
+        <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
+          <img src="images/github.png" alt="GitHub Icon" class="social-img">
+        </a>
+        <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
+          <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-img">
+        </a>
+        <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
+          <img src="images/twitter.png" alt="Twitter Icon" class="social-img">
+        </a>
+      </div>
+    </div>
+  </header>
 
-            <!-- Navigation Menu -->
-            <nav class="nav-menu">
-                <a href="about.html" class="nav-link">About</a>
-                <a href="research.html" class="nav-link">Research</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="publications.html" class="nav-link">Publications</a>
-            </nav>
+  <main>
+    <div class="research-container">
+      <div class="research-content">
+        <h1 class="research-title">Comparative and Evolutionary Genomics</h1>
+        <p class="research-text">
+          Comparative and evolutionary genomics is a field of study that focuses on comparing the genomes of different species to understand their evolutionary relationships and functional differences. This approach provides insights into the mechanisms of genome evolution, gene function, and the impact of genetic changes on adaptation and speciation.
+        </p>
+        <p class="research-text">
+          By analyzing the similarities and differences in gene sequences, gene expression, and genomic structures across species, researchers can uncover the evolutionary pressures that have shaped the genomes of various organisms. This field integrates data from various sources, including whole-genome sequences, transcriptomic data, and evolutionary models, to build comprehensive views of genome evolution.
+        </p>
+      </div>
+      <div class="research-video">
+        <iframe 
+          src="https://www.youtube.com/embed/U5CHfCIOPGI" 
+          title="Comparative and Evolutionary Genomics" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+          class="research-video-iframe">
+        </iframe>
+      </div>
+    </div>
+  </main>
 
-            <!-- Hamburger Menu (for mobile) -->
-            <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2024 Rohan Nath. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="license.html" class="footer-link">License</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </footer>
 
-            <!-- Social Media Icons -->
-            <div class="social-media">
-                <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
-                    <img src="images/github.png" alt="GitHub Icon" class="social-icon-img">
-                </a>
-                <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                    <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-icon-img">
-                </a>
-                <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
-                    <img src="images/twitter.png" alt="Twitter Icon" class="social-icon-img">
-                </a>
-            </div>
-        </div>
-    </header>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburgerMenu = document.querySelector('.hamburger-menu');
+      const navMenu = document.querySelector('.nav-menu');
 
-    <!-- Main Section -->
-    <main>
-        <div class="research-container">
-            <!-- Research Content -->
-            <div class="research-content">
-                <h1 class="research-title">Comparative and Evolutionary Genomics</h1>
-                <p class="research-text">
-                    Comparative and evolutionary genomics is a field of study that focuses on comparing the genomes of different species to understand their evolutionary relationships and functional differences. This approach provides insights into the mechanisms of genome evolution, gene function, and the impact of genetic changes on adaptation and speciation.
-                </p>
-                <p class="research-text">
-                    By analyzing the similarities and differences in gene sequences, gene expression, and genomic structures across species, researchers can uncover the evolutionary pressures that have shaped the genomes of various organisms. This field integrates data from various sources, including whole-genome sequences, transcriptomic data, and evolutionary models, to build comprehensive views of genome evolution.
-                </p>
-            </div>
+      if (hamburgerMenu && navMenu) {
+        hamburgerMenu.addEventListener('click', () => {
+          const isActive = navMenu.classList.toggle('active');
+          hamburgerMenu.classList.toggle('open');
+          const navLinks = navMenu.querySelectorAll('.nav-link');
+          navLinks.forEach((link, i) => {
+            link.style.animation = isActive
+              ? `slideIn 0.3s ease forwards ${i * 0.1}s`
+              : 'none';
+          });
+        });
 
-            <!-- Research Video -->
-            <div class="research-video">
-                <iframe 
-                    src="https://www.youtube.com/embed/U5CHfCIOPGI" 
-                    title="Comparative and Evolutionary Genomics" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    class="research-video-iframe">
-                </iframe>
-            </div>
-        </div>
-    </main>
+        document.addEventListener('click', (e) => {
+          if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            hamburgerMenu.classList.remove('open');
+          }
+        });
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">&copy; 2024 Rohan Nath. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="license.html" class="footer-link">License</a>
-                <a href="contact.html" class="footer-link">Contact</a>
-            </div>
-        </div>
-    </footer>
+        hamburgerMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            hamburgerMenu.click();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

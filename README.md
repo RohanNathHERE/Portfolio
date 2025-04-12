@@ -46,5 +46,5 @@ See `license.html` for license information.
 
 ## Author
 
-Created by [Rohan Nath]  
+Created by Rohan Nath
 For any queries, please visit the [contact](contact.html) page.

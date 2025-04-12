@@ -4,87 +4,374 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Rohan Nath</title>
-  
-  <!-- SEO: Meta Description & Keywords -->
   <meta name="description" content="Biography of Rohan Nath, a researcher in evolution, pharmacology, and pharmacogenomics of G Protein-Coupled Receptors (GPCRs).">
   <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, pharmacogenomics, evolutionary biology, IISER, research">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- JavaScript -->
-  <script defer src="scripts.js"></script>
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/logos/Rohan Nath-.png" type="image/png">
-
-  <!-- Google Fonts for better typography -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95)),
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
+      color: #f8f8f2;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: rgba(29, 31, 42, 0.9);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #6272a4;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-img {
+      height: 48px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: #f8f8f2;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #50fa7b;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #50fa7b;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger-menu span {
+      width: 25px;
+      height: 3px;
+      background-color: #f8f8f2;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-menu.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger-menu.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .social-media {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-img {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .social-icon:hover .social-img {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .about-section {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .about-box {
+      display: flex;
+      gap: 3rem;
+      background: rgba(29, 31, 42, 0.7);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-info {
+      flex: 2;
+    }
+
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #f8f8f2;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-quote {
+      font-style: italic;
+      color: #bd93f9;
+      font-size: 1.1rem;
+      margin: 1.5rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid #50fa7b;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: #f8f8f2;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+
+    .about-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .link-item-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #f8f8f2;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .link-item-link:hover {
+      color: #50fa7b;
+    }
+
+    .link-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+    }
+
+    .link-text {
+      font-size: 0.95rem;
+    }
+
+    .portfolio-info {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .portfolio-picture {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-picture:hover {
+      transform: scale(1.02);
+    }
+
+    .footer {
+      background-color: #1d1f2a;
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid #6272a4;
+      width: 100%;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: #6272a4;
+      font-weight: 400;
+    }
+
+    .footer-links {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .footer-link {
+      color: #bd93f9;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #50fa7b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #1d1f2a;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hamburger-menu {
+        display: flex;
+      }
+
+      .about-box {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+      }
+
+      .about-title {
+        font-size: 2rem;
+      }
+
+      .about-text {
+        font-size: 0.95rem;
+      }
+
+      .portfolio-picture {
+        max-width: 80%;
+      }
+
+      .about-links {
+        gap: 1rem;
+      }
+
+      .social-img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header>
+  <header class="header">
     <div class="nav-container">
-      <!-- Logo -->
       <div class="logo">
         <a href="index.html">
           <img src="images/logos/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
         </a>
       </div>
-
-      <!-- Navigation Menu -->
       <nav class="nav-menu">
         <a href="about.html" class="nav-link">About</a>
         <a href="research.html" class="nav-link">Research</a>
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="publications.html" class="nav-link">Publications</a>
       </nav>
-
-      <!-- Hamburger Menu (for mobile) -->
       <div class="hamburger-menu" aria-label="Menu" role="button" tabindex="0">
         <span></span>
         <span></span>
         <span></span>
       </div>
-
-      <!-- Social Media Icons -->
       <div class="social-media">
         <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
-          <img src="images/github.png" alt="GitHub Icon" class="social-icon-img">
+          <img src="images/github.png" alt="GitHub Icon" class="social-img">
         </a>
         <a href="https://www.linkedin.com/in/rohan-nath-iiserbpr/" target="_blank" class="social-icon" aria-label="LinkedIn">
-          <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-icon-img">
+          <img src="images/linkedin.png" alt="LinkedIn Icon" class="social-img">
         </a>
         <a href="https://x.com/Rohan_Nath_" target="_blank" class="social-icon" aria-label="Twitter">
-          <img src="images/twitter.png" alt="Twitter Icon" class="social-icon-img">
+          <img src="images/twitter.png" alt="Twitter Icon" class="social-img">
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Main Content: About Section -->
   <main>
     <section class="about-section">
       <div class="about-box">
-        <!-- About Information -->
         <div class="about-info">
           <h1 class="about-title">Biography</h1>
-
-          <!-- Quote -->
           <blockquote class="about-quote">
             <strong><em>"The study of evolution is the study of ourselves, our origins, and the very nature of life itself." — Richard Dawkins</em></strong>
           </blockquote>
-
-          <!-- Biography Content -->
           <p class="about-text">Hello! I’m Rohan Nath, a researcher deeply engaged in the fascinating journey of evolution, pharmacology, and pharmacogenomics of G Protein-Coupled Receptors (GPCRs). My research aims to personalize drug design by enhancing our understanding of GPCRs and their pivotal roles in biological processes.</p>
-
           <p class="about-text">I completed my undergraduate studies in Zoology Honours at the University of Calcutta and pursued an integrated PhD at the Indian Institute of Science Education and Research (IISER) Berhampur, after clearing the IIT-JAM and JGEEBILS national exams. I earned my MS there and am now a graduate student in the Comparative and Evolutionary Genomics Lab, under the mentorship of Dr. Arunkumar Krishnan. My work focuses on the evolution of proteins, with a special emphasis on GPCRs, their pharmacology, and molecular dynamics. I am also passionate about pharmacogenomics and personalized medicine.</p>
-
           <p class="about-text">In addition, I explore lineage-specific expansions, phylogenomics, and the genome, transcriptome, and proteome of various species. I enjoy handling large datasets and experimenting with different visualization methods using tools like Blender and R.</p>
-
           <p class="about-text">Feel free to explore my research, projects, and publications through the links provided on this site. Thank you for visiting!</p>
-
-          <!-- Links to Profiles -->
           <div class="about-links">
             <div class="link-item">
               <a href="https://scholar.google.com/" target="_blank" class="link-item-link">
@@ -112,8 +399,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Portfolio Picture -->
         <div class="portfolio-info">
           <img src="images/about.JPG" alt="Portrait of Rohan Nath" class="portfolio-picture">
         </div>
@@ -121,15 +406,48 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="footer-content">
-      <p class="footer-text">&copy; 2024 Rohan Nath. All rights reserved.</p>
+      <p class="footer-text">© 2024 Rohan Nath. All rights reserved.</p>
       <div class="footer-links">
         <a href="license.html" class="footer-link">License</a>
         <a href="contact.html" class="footer-link">Contact</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburgerMenu = document.querySelector('.hamburger-menu');
+      const navMenu = document.querySelector('.nav-menu');
+
+      if (hamburgerMenu && navMenu) {
+        hamburgerMenu.addEventListener('click', () => {
+          const isActive = navMenu.classList.toggle('active');
+          hamburgerMenu.classList.toggle('open');
+          const navLinks = navMenu.querySelectorAll('.nav-link');
+          navLinks.forEach((link, i) => {
+            link.style.animation = isActive
+              ? `slideIn 0.3s ease forwards ${i * 0.1}s`
+              : 'none';
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            hamburgerMenu.classList.remove('open');
+          }
+        });
+
+        hamburgerMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            hamburgerMenu.click();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
