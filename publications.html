@@ -9,16 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Reset and Base Styles */
+    :root {
+      --bg-dark: #282a36;
+      --bg-light: #f5f5f5;
+      --text-dark: #f8f8f2;
+      --text-light: #333;
+      --accent-dark: #50fa7b;
+      --accent-light: #2e7d32;
+      --secondary-dark: #6272a4;
+      --secondary-light: #90a4ae;
+      --bg-gradient-dark: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95));
+      --bg-gradient-light: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95));
+      --header-bg-dark: rgba(29, 31, 42, 0.9);
+      --header-bg-light: rgba(255, 255, 255, 0.9);
+      --footer-bg-dark: #1d1f2a;
+      --footer-bg-light: #e0e0e0;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
     }
 
     body {
-      background: linear-gradient(rgba(40, 42, 54, 0.95), rgba(40, 42, 54, 0.95)),
+      background: var(--bg-gradient-dark),
                   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
-      color: #f8f8f2;
+      color: var(--text-dark);
       font-family: 'Inter', sans-serif;
       line-height: 1.5;
       font-weight: 400;
@@ -27,14 +45,25 @@
       min-height: 100vh;
     }
 
+    body.light-mode {
+      background: var(--bg-gradient-light),
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#2e7d32" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#2e7d32" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#90a4ae"/><circle cx="350" cy="520" r="4" fill="#90a4ae"/><circle cx="400" cy="480" r="5" fill="#90a4ae"/><circle cx="1200" cy="600" r="5" fill="#90a4ae"/><circle cx="1250" cy="620" r="4" fill="#90a4ae"/><circle cx="1300" cy="580" r="5" fill="#90a4ae"/><line x1="500" y1="700" x2="600" y2="750" stroke="#90a4ae" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#90a4ae" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#90a4ae" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#90a4ae" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
+      color: var(--text-light);
+    }
+
     /* Header */
     .header {
-      background: rgba(29, 31, 42, 0.9);
+      background: var(--header-bg-dark);
       padding: 1.5rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid #6272a4;
+      border-bottom: 1px solid var(--secondary-dark);
+    }
+
+    body.light-mode .header {
+      background: var(--header-bg-light);
+      border-bottom: 1px solid var(--secondary-light);
     }
 
     .nav-container {
@@ -43,11 +72,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     .logo-img {
       height: 64px;
       transition: transform 0.3s ease;
+      filter: brightness(0) invert(1);
+    }
+
+    body.light-mode .logo-img {
+      filter: brightness(0) invert(0);
     }
 
     .logo-img:hover {
@@ -57,16 +92,21 @@
     .nav-menu {
       display: flex;
       gap: 1.5rem;
+      align-items: center;
     }
 
     .nav-link {
-      color: #f8f8f2;
+      color: var(--text-dark);
       text-decoration: none;
       font-size: 1rem;
       font-weight: 500;
       position: relative;
       transition: color 0.3s ease;
       padding: 0.5rem 0;
+    }
+
+    body.light-mode .nav-link {
+      color: var(--text-light);
     }
 
     .nav-link::after {
@@ -76,12 +116,20 @@
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: #50fa7b;
+      background-color: var(--accent-dark);
       transition: width 0.3s ease;
     }
 
+    body.light-mode .nav-link::after {
+      background-color: var(--accent-light);
+    }
+
     .nav-link:hover {
-      color: #50fa7b;
+      color: var(--accent-dark);
+    }
+
+    body.light-mode .nav-link:hover {
+      color: var(--accent-light);
     }
 
     .nav-link:hover::after {
@@ -99,8 +147,12 @@
     .hamburger-menu span {
       width: 25px;
       height: 3px;
-      background-color: #f8f8f2;
+      background-color: var(--text-dark);
       transition: all 0.3s ease;
+    }
+
+    body.light-mode .hamburger-menu span {
+      background-color: var(--text-light);
     }
 
     .hamburger-menu.open span:nth-child(1) {
@@ -118,18 +170,60 @@
     .social-media {
       display: flex;
       gap: 1rem;
+      align-items: center;
     }
 
     .social-img {
       width: 28px;
       height: 28px;
       filter: brightness(0) invert(1);
-      transition: transform 0.3s ease, filter 0.3s ease;
+      transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.light-mode .social-img {
+      filter: none;
     }
 
     .social-icon:hover .social-img {
       transform: scale(1.1);
-      filter: brightness(0) invert(1) brightness(1.2);
+      box-shadow: 0 0 8px var(--accent-dark);
+    }
+
+    body.light-mode .social-icon:hover .social-img {
+      box-shadow: 0 0 8px var(--accent-light);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-icon {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .theme-icon.sun {
+      opacity: 0;
+      transform: rotate(-90deg);
+      position: absolute;
+    }
+
+    body.light-mode .theme-icon.sun {
+      opacity: 1;
+      transform: rotate(0);
+    }
+
+    body.light-mode .theme-icon.moon {
+      opacity: 0;
+      transform: rotate(90deg);
     }
 
     /* Main Section */
@@ -148,6 +242,10 @@
       animation: fadeIn 1s ease-in-out;
     }
 
+    body.light-mode .publications-container {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
     .year-section {
       margin-bottom: 2rem;
     }
@@ -155,10 +253,15 @@
     .year-heading {
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
-      color: #50fa7b;
+      color: var(--accent-dark);
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid #6272a4;
+      border-bottom: 1px solid var(--secondary-dark);
       padding-bottom: 0.5rem;
+    }
+
+    body.light-mode .year-heading {
+      color: var(--accent-light);
+      border-bottom: 1px solid var(--secondary-light);
     }
 
     .publication-item {
@@ -169,6 +272,10 @@
       background: rgba(40, 42, 54, 0.5);
       border-radius: 8px;
       transition: transform 0.3s ease;
+    }
+
+    body.light-mode .publication-item {
+      background: rgba(200, 200, 200, 0.5);
     }
 
     .publication-item:hover {
@@ -182,9 +289,13 @@
     .publication-title {
       font-family: 'Inter', sans-serif;
       font-size: 1.4rem;
-      color: #f8f8f2;
+      color: var(--text-dark);
       margin-bottom: 0.5rem;
       font-weight: 500;
+    }
+
+    body.light-mode .publication-title {
+      color: var(--text-light);
     }
 
     .publication-link {
@@ -194,8 +305,16 @@
       transition: color 0.3s ease;
     }
 
+    body.light-mode .publication-link {
+      color: #0288d1;
+    }
+
     .publication-link:hover {
-      color: #50fa7b;
+      color: var(--accent-dark);
+    }
+
+    body.light-mode .publication-link:hover {
+      color: var(--accent-light);
     }
 
     .publication-image {
@@ -218,11 +337,16 @@
 
     /* Footer */
     .footer {
-      background-color: #1d1f2a;
+      background-color: var(--footer-bg-dark);
       padding: 1rem;
       text-align: center;
-      border-top: 1px solid #6272a4;
+      border-top: 1px solid var(--secondary-dark);
       width: 100%;
+    }
+
+    body.light-mode .footer {
+      background-color: var(--footer-bg-light);
+      border-top: 1px solid var(--secondary-light);
     }
 
     .footer-content {
@@ -232,8 +356,12 @@
 
     .footer-text {
       font-size: 0.85rem;
-      color: #6272a4;
+      color: var(--secondary-dark);
       font-weight: 400;
+    }
+
+    body.light-mode .footer-text {
+      color: var(--secondary-light);
     }
 
     .footer-links {
@@ -251,8 +379,16 @@
       transition: color 0.3s ease;
     }
 
+    body.light-mode .footer-link {
+      color: #0288d1;
+    }
+
     .footer-link:hover {
-      color: #50fa7b;
+      color: var(--accent-dark);
+    }
+
+    body.light-mode .footer-link:hover {
+      color: var(--accent-light);
     }
 
     /* Animations */
@@ -275,9 +411,13 @@
         top: 70px;
         left: 0;
         width: 100%;
-        background: #1d1f2a;
+        background: var(--footer-bg-dark);
         padding: 1rem;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      body.light-mode .nav-menu {
+        background: var(--footer-bg-light);
       }
 
       .nav-menu.active {
@@ -350,6 +490,22 @@
         <span></span>
       </div>
       <div class="social-media">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f8f8f2" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="theme-icon sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
         <a href="https://github.com/RohanNathHERE" target="_blank" class="social-icon" aria-label="GitHub">
           <img src="images/github.png" alt="GitHub" class="social-img">
         </a>
@@ -426,6 +582,34 @@
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           hamburgerMenu.click();
+        }
+      });
+    }
+
+    // --- Theme Toggle ---
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    const setTheme = (isLight) => {
+      body.classList.toggle('light-mode', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    };
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'light') {
+      setTheme(true);
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        setTheme(!body.classList.contains('light-mode'));
+      });
+
+      // Keyboard accessibility
+      themeToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          themeToggle.click();
         }
       });
     }
