@@ -272,30 +272,59 @@
 
     .blog-posts {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       animation: fadeIn 1s ease-in-out;
     }
 
-    .update-message {
+    .blog-preview {
       background: rgba(29, 31, 42, 0.7);
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       text-align: center;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      width: 100%;
     }
 
-    body.light-mode .update-message {
+    body.light-mode .blog-preview {
       background: rgba(255, 255, 255, 0.7);
     }
 
-    .update-message-title {
+    .blog-preview-title {
       font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
       color: var(--accent-dark);
+      margin-bottom: 0.5rem;
     }
 
-    body.light-mode .update-message-title {
+    body.light-mode .blog-preview-title {
       color: var(--accent-light);
+    }
+
+    .blog-preview-title a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    .blog-preview-title a:hover {
+      color: var(--text-dark);
+    }
+
+    body.light-mode .blog-preview-title a:hover {
+      color: var(--text-light);
+    }
+
+    .blog-preview-description {
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-top: 0.5rem;
+    }
+
+    body.light-mode .blog-preview-description {
+      color: var(--text-light);
     }
 
     /* Footer */
@@ -403,11 +432,11 @@
         font-size: 0.95rem;
       }
 
-      .update-message {
+      .blog-preview {
         padding: 1.5rem;
       }
 
-      .update-message-title {
+      .blog-preview-title {
         font-size: 1.8rem;
       }
 
@@ -484,8 +513,13 @@
   <main>
     <div class="blog-container">
       <section class="blog-posts">
-        <div class="update-message">
-          <h1 class="update-message-title"><strong>We will update soon!</strong></h1>
+        <div class="blog-preview">
+          <h2 class="blog-preview-title">
+            <a href="blog1.html">The Role of GPCRs in Drug Design</a>
+          </h2>
+          <p class="blog-preview-description">
+            Discover how G-protein-coupled receptors (GPCRs) drive 35% of approved drugs, shaping modern pharmacology through their role in signal transduction and structural diversity.
+          </p>
         </div>
       </section>
     </div>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>License | Rohan Nath</title>
-  <meta name="description" content="License information for the content and code on Rohan Nath's website, including Creative Commons and MIT License details.">
-  <meta name="keywords" content="Rohan Nath, license, Creative Commons, MIT License, content license, code license">
+  <title>The Role of GPCRs in Drug Design | Rohan Nath</title>
+  <meta name="description" content="A blog post by Rohan Nath discussing the significance of GPCRs in drug design and their impact on pharmacology.">
+  <meta name="keywords" content="Rohan Nath, GPCRs, pharmacology, drug design, pharmacogenomics, evolutionary biology, blog, science">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Reset and Base Styles */
@@ -226,80 +226,85 @@
       transform: rotate(90deg);
     }
 
+    /* Blog Post Header */
+    .blog-post-header {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .blog-post-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    body.light-mode .blog-post-title {
+      color: var(--text-light);
+    }
+
+    .blog-post-meta {
+      font-size: 0.9rem;
+      color: var(--secondary-dark);
+      margin-bottom: 1rem;
+    }
+
+    body.light-mode .blog-post-meta {
+      color: var(--secondary-light);
+    }
+
     /* Main Section */
     main {
       flex: 1;
-      max-width: 1200px;
-      margin: 3rem auto;
+      max-width: 800px;
+      margin: 0 auto;
       padding: 0 2rem;
     }
 
-    .license-container {
+    .blog-post-content {
       background: rgba(29, 31, 42, 0.7);
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin-bottom: 3rem;
       animation: fadeIn 1s ease-in-out;
     }
 
-    body.light-mode .license-container {
+    body.light-mode .blog-post-content {
       background: rgba(255, 255, 255, 0.7);
     }
 
-    .license-title {
+    .blog-post-content h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    body.light-mode .license-title {
-      color: var(--text-light);
-    }
-
-    .license-text {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      margin-bottom: 1.2rem;
-      font-weight: 400;
-    }
-
-    body.light-mode .license-text {
-      color: var(--text-light);
-    }
-
-    .license-section {
-      margin-top: 2rem;
-    }
-
-    .license-section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       color: var(--accent-dark);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    body.light-mode .blog-post-content h2 {
+      color: var(--accent-light);
+    }
+
+    .blog-post-content p {
       margin-bottom: 1rem;
+      line-height: 1.6;
     }
 
-    body.light-mode .license-section-title {
-      color: var(--accent-light);
-    }
-
-    .license-link {
-      color: #bd93f9;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    body.light-mode .license-link {
-      color: #0288d1;
-    }
-
-    .license-link:hover {
+    .blog-post-content a {
       color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 500;
     }
 
-    body.light-mode .license-link:hover {
+    body.light-mode .blog-post-content a {
       color: var(--accent-light);
+    }
+
+    .blog-post-content a:hover {
+      text-decoration: underline;
     }
 
     /* Footer */
@@ -399,20 +404,16 @@
         height: 48px;
       }
 
-      .license-container {
+      .blog-post-title {
+        font-size: 2rem;
+      }
+
+      .blog-post-content {
         padding: 1.5rem;
       }
 
-      .license-title {
-        font-size: 2.2rem;
-      }
-
-      .license-section-title {
-        font-size: 1.8rem;
-      }
-
-      .license-text {
-        font-size: 0.95rem;
+      .blog-post-content h2 {
+        font-size: 1.5rem;
       }
 
       .social-media {
@@ -476,36 +477,37 @@
     </div>
   </header>
 
+  <!-- Blog Post Header -->
+  <header class="blog-post-header">
+    <h1 class="blog-post-title">The Role of GPCRs in Drug Design</h1>
+    <p class="blog-post-meta">Posted on April 10, 2025 by Rohan Nath</p>
+  </header>
+
   <!-- Main Section -->
   <main>
-    <div class="license-container">
-      <h1 class="license-title">License Information</h1>
-      <p class="license-text">This page provides information about the licensing of the content and code available on this website.</p>
-      <section class="license-section">
-        <h2 class="license-section-title">Content License</h2>
-        <p class="license-text">
-          The content on this website is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" class="license-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>. You are free to share and adapt the content as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-        </p>
-      </section>
-      <section class="license-section">
-        <h2 class="license-section-title">Code License</h2>
-        <p class="license-text">
-          The code available on this website is licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank" class="license-link">MIT License</a>. You are free to use, modify, and distribute the code as long as you include the original license text and copyright notice in any copies or substantial portions of the code.
-        </p>
-      </section>
-      <section class="license-section">
-        <h2 class="license-section-title">Disclaimer</h2>
-        <p class="license-text">
-          All content and code are provided "as is", without warranty of any kind. For more detailed terms and conditions, please refer to the full license agreements linked above.
-        </p>
-      </section>
-    </div>
+    <article class="blog-post-content">
+      <h2>Introduction</h2>
+      <p>
+        G-protein-coupled receptors (GPCRs) are among the most critical targets in modern pharmacology. These membrane-bound proteins mediate a vast array of physiological processes, from vision to immune responses, making them prime candidates for drug development. Approximately 35% of all approved drugs target GPCRs, highlighting their significance.
+      </p>
+      <h2>Why GPCRs Matter</h2>
+      <p>
+        GPCRs are versatile due to their structural diversity and ability to interact with various ligands, including hormones, neurotransmitters, and synthetic drugs. Their role in signal transduction allows drugs to modulate cellular responses precisely. For instance, beta-blockers, which target GPCRs like the β-adrenergic receptor, are widely used to manage hypertension and heart failure.
+      </p>
+      <p>
+        Advances in structural biology, such as cryo-electron microscopy, have revolutionized our understanding of GPCR dynamics, enabling the design of more selective and effective drugs. However, challenges remain, including off-target effects and receptor desensitization, which require innovative approaches in drug design.
+      </p>
+      <h2>Looking Ahead</h2>
+      <p>
+        The future of GPCR-targeted therapies lies in personalized medicine. By integrating pharmacogenomics, we can tailor treatments to individual genetic profiles, enhancing efficacy and reducing side effects. As research progresses, GPCRs will continue to shape the landscape of therapeutic innovation.
+      </p>
+    </article>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <p class="footer-text">© 2024 Rohan Nath. All rights reserved.</p>
+      <p class="footer-text">© 2025 Rohan Nath. All rights reserved.</p>
       <div class="footer-links">
         <a href="license.html" class="footer-link">License</a>
         <a href="contact.html" class="footer-link">Contact</a>

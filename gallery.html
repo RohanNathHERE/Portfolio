@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>License | Rohan Nath</title>
-  <meta name="description" content="License information for the content and code on Rohan Nath's website, including Creative Commons and MIT License details.">
-  <meta name="keywords" content="Rohan Nath, license, Creative Commons, MIT License, content license, code license">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Gallery | Rohan Nath</title>
+  <meta name="description" content="Gallery showcasing Rohan Nath's bioinformatics visualizations and research projects.">
+  <meta name="keywords" content="Rohan Nath, bioinformatics, GPCRs, data visualization, gallery">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700.display=swap" rel="stylesheet">
   <style>
-    /* Reset and Base Styles */
+    /* Inherit Base Styles from Original */
     :root {
       --bg-dark: #282a36;
       --bg-light: #f5f5f5;
@@ -34,6 +34,26 @@
     }
 
     body {
+        background: var(--bg-gradient-dark),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
+        color: var(--text-dark);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    }
+
+    body {
       background: var(--bg-gradient-dark),
                   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g opacity="0.3"><path d="M200,200 Q400,100 600,200 T1000,200 Q1200,100 1400,200 T1800,200" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><path d="M200,300 Q400,400 600,300 T1000,300 Q1200,400 1400,300 T1800,300" stroke="#50fa7b" stroke-width="2" fill="none" opacity="0.4" filter="url(#blur)"/><circle cx="300" cy="500" r="5" fill="#6272a4"/><circle cx="350" cy="520" r="4" fill="#6272a4"/><circle cx="400" cy="480" r="5" fill="#6272a4"/><circle cx="1200" cy="600" r="5" fill="#6272a4"/><circle cx="1250" cy="620" r="4" fill="#6272a4"/><circle cx="1300" cy="580" r="5" fill="#6272a4"/><line x1="500" y1="700" x2="600" y2="750" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="600" y1="750" x2="700" y2="700" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1400" y1="400" x2="1500" y2="450" stroke="#6272a4" stroke-width="1" opacity="0.5"/><line x1="1500" y1="450" x2="1600" y2="400" stroke="#6272a4" stroke-width="1" opacity="0.5"/></g></svg>') center/cover no-repeat fixed;
       color: var(--text-dark);
@@ -43,6 +63,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      position: relative;
     }
 
     body.light-mode {
@@ -51,7 +72,7 @@
       color: var(--text-light);
     }
 
-    /* Header */
+    /* Header (Reused from Original) */
     .header {
       background: var(--header-bg-dark);
       padding: 1.5rem 2rem;
@@ -229,80 +250,198 @@
     /* Main Section */
     main {
       flex: 1;
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    .license-container {
-      background: rgba(29, 31, 42, 0.7);
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      animation: fadeIn 1s ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
 
-    body.light-mode .license-container {
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    .license-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
+    .gallery-section {
+      max-width: 1200px;
+      margin: 0 auto;
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      z-index: 1;
+      position: relative;
     }
 
-    body.light-mode .license-title {
-      color: var(--text-light);
-    }
-
-    .license-text {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      margin-bottom: 1.2rem;
-      font-weight: 400;
-    }
-
-    body.light-mode .license-text {
-      color: var(--text-light);
-    }
-
-    .license-section {
-      margin-top: 2rem;
-    }
-
-    .license-section-title {
+    .gallery-heading {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: var(--accent-dark);
-      margin-bottom: 1rem;
-    }
-
-    body.light-mode .license-section-title {
-      color: var(--accent-light);
-    }
-
-    .license-link {
-      color: #bd93f9;
-      text-decoration: none;
+      font-size: 3rem;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       transition: color 0.3s ease;
     }
 
-    body.light-mode .license-link {
-      color: #0288d1;
+    body.light-mode .gallery-heading {
+      color: var(--text-light);
     }
 
-    .license-link:hover {
+    .gallery-heading:hover {
       color: var(--accent-dark);
+      cursor: default;
     }
 
-    body.light-mode .license-link:hover {
+    body.light-mode .gallery-heading:hover {
       color: var(--accent-light);
     }
 
-    /* Footer */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideUp 0.5s ease forwards;
+      animation-delay: calc(var(--index) * 0.1s);
+      opacity: 0;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: var(--text-dark);
+    }
+
+    body.light-mode .gallery-overlay {
+      color: var(--text-light);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-description {
+      font-size: 0.9rem;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: var(--bg-dark);
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 80%;
+      max-height: 80%;
+      overflow: auto;
+      position: relative;
+      animation: scaleIn 0.3s ease;
+    }
+
+    body.light-mode .modal-content {
+      background: var(--bg-light);
+    }
+
+    .modal-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    body.light-mode .modal-title {
+      color: var(--text-light);
+    }
+
+    .modal-description {
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    body.light-mode .modal-description {
+      color: var(--text-light);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    body.light-mode .modal-close {
+      color: var(--text-light);
+    }
+
+    .modal-close:hover {
+      color: var(--accent-dark);
+    }
+
+    body.light-mode .modal-close:hover {
+      color: var(--accent-light);
+    }
+
+    /* Footer (Reused from Original) */
     .footer {
       background-color: var(--footer-bg-dark);
       padding: 1rem;
@@ -369,6 +508,16 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .nav-menu {
@@ -399,29 +548,29 @@
         height: 48px;
       }
 
-      .license-container {
-        padding: 1.5rem;
+      .gallery-heading {
+        font-size: 2rem;
       }
 
-      .license-title {
-        font-size: 2.2rem;
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       }
 
-      .license-section-title {
-        font-size: 1.8rem;
+      .gallery-item img {
+        height: 150px;
       }
 
-      .license-text {
-        font-size: 0.95rem;
+      .modal-content {
+        max-width: 90%;
+        padding: 1rem;
       }
 
-      .social-media {
-        gap: 0.5rem;
+      .modal-title {
+        font-size: 1.5rem;
       }
 
-      .social-img {
-        width: 24px;
-        height: 24px;
+      .modal-description {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -440,6 +589,7 @@
         <a href="research.html" class="nav-link">Research</a>
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="publications.html" class="nav-link">Publications</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
       </nav>
       <div class="hamburger-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
         <span></span>
@@ -478,27 +628,62 @@
 
   <!-- Main Section -->
   <main>
-    <div class="license-container">
-      <h1 class="license-title">License Information</h1>
-      <p class="license-text">This page provides information about the licensing of the content and code available on this website.</p>
-      <section class="license-section">
-        <h2 class="license-section-title">Content License</h2>
-        <p class="license-text">
-          The content on this website is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" class="license-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>. You are free to share and adapt the content as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-        </p>
-      </section>
-      <section class="license-section">
-        <h2 class="license-section-title">Code License</h2>
-        <p class="license-text">
-          The code available on this website is licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank" class="license-link">MIT License</a>. You are free to use, modify, and distribute the code as long as you include the original license text and copyright notice in any copies or substantial portions of the code.
-        </p>
-      </section>
-      <section class="license-section">
-        <h2 class="license-section-title">Disclaimer</h2>
-        <p class="license-text">
-          All content and code are provided "as is", without warranty of any kind. For more detailed terms and conditions, please refer to the full license agreements linked above.
-        </p>
-      </section>
+    <section class="gallery-section">
+      <h1 class="gallery-heading">Visualization Gallery</h1>
+      <div class="gallery-grid">
+        <div class="gallery-item" style="--index: 0;">
+          <img src="images/gpcr-visualization.jpg" alt="GPCR Visualization">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">GPCR Structure</h3>
+            <p class="gallery-description">3D visualization of G Protein-Coupled Receptor interactions.</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--index: 1;">
+          <img src="images/phylogenetic-tree.jpg" alt="Phylogenetic Tree">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Phylogenetic Tree</h3>
+            <p class="gallery-description">Evolutionary relationships of gene families.</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--index: 2;">
+          <img src="images/protein-domain.jpg" alt="Protein Domain">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Protein Domains</h3>
+            <p class="gallery-description">Domain architecture of key proteins.</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--index: 3;">
+          <img src="images/heatmap.jpg" alt="Heatmap">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Expression Heatmap</h3>
+            <p class="gallery-description">Gene expression patterns across tissues.</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--index: 4;">
+          <img src="images/network-analysis.jpg" alt="Network Analysis">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Network Analysis</h3>
+            <p class="gallery-description">Protein interaction networks in bioinformatics.</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--index: 5;">
+          <img src="images/molecular-dynamics.jpg" alt="Molecular Dynamics">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Molecular Dynamics</h3>
+            <p class="gallery-description">Simulation of molecular movements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="gallery-modal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <img class="modal-img" src="" alt="">
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+      </div>
     </div>
   </main>
 
@@ -523,7 +708,6 @@
         const isActive = navMenu.classList.toggle('active');
         hamburgerMenu.classList.toggle('open');
 
-        // Animate menu items
         const navLinks = navMenu.querySelectorAll('.nav-link');
         navLinks.forEach((link, i) => {
           link.style.animation = isActive
@@ -532,7 +716,6 @@
         });
       });
 
-      // Close on outside click
       document.addEventListener('click', (e) => {
         if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
           navMenu.classList.remove('active');
@@ -540,7 +723,6 @@
         }
       });
 
-      // Keyboard accessibility
       hamburgerMenu.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -558,7 +740,6 @@
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     };
 
-    // Load saved theme
     if (localStorage.getItem('theme') === 'light') {
       setTheme(true);
     }
@@ -568,7 +749,6 @@
         setTheme(!body.classList.contains('light-mode'));
       });
 
-      // Keyboard accessibility
       themeToggle.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -576,6 +756,57 @@
         }
       });
     }
+
+    // --- Gallery Modal ---
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modal = document.getElementById('gallery-modal');
+    const modalImg = modal.querySelector('.modal-img');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDescription = modal.querySelector('.modal-description');
+    const modalClose = modal.querySelector('.modal-close');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.querySelector('img').src;
+        const title = item.querySelector('.gallery-title').textContent;
+        const description = item.querySelector('.gallery-description').textContent;
+
+        modalImg.src = imgSrc;
+        modalImg.alt = title;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Keyboard accessibility for modal
+    modalClose.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        modalClose.click();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
   </script>
 </body>
 </html>
