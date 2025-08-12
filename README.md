@@ -1,6 +1,6 @@
 # Rohan Nath Portfolio
 
-A personal portfolio website showcasing my research, publications, projects, and contact information. Designed to be clean, responsive, and user-friendly.
+A personal portfolio website showcasing my research, publications, and contact information. Designed to be clean, responsive, and user-friendly.
 
 ## Features
 
