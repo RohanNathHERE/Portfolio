@@ -6,7 +6,7 @@ A personal portfolio website showcasing my research, publications, projects, and
 
 - Professional and minimalistic design
 - Fully responsive for mobile and desktop
-- Sections for About, Research, Publications, Projects, Blog, and Contact
+- Sections for About, Research, Publications and Contact
 - Easy to customize
 
 ## Getting Started
