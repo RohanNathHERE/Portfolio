@@ -66,6 +66,31 @@
       border-bottom: 1px solid var(--secondary-light);
     }
 
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .logo-text {
+  color: var(--text-light);
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo-text:hover {
+  color: var(--accent-dark);
+  letter-spacing: 2px;
+}
+
+body.light-mode .logo-text:hover {
+  color: var(--accent-light);
+}
+
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -73,20 +98,6 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-    }
-
-    .logo-img {
-      height: 64px;
-      transition: transform 0.3s ease;
-      filter: brightness(0) invert(1);
-    }
-
-    body.light-mode .logo-img {
-      filter: brightness(0) invert(0);
-    }
-
-    .logo-img:hover {
-      transform: scale(1.05);
     }
 
     .nav-menu {
@@ -712,10 +723,6 @@
         display: flex;
       }
 
-      .logo-img {
-        height: 48px;
-      }
-
       .about-box {
         flex-direction: column;
         gap: 1.5rem;
@@ -793,7 +800,7 @@
     <div class="nav-container">
       <div class="logo">
         <a href="#about">
-          <img src="images/Rohan Nath-.png" alt="Rohan Nath Logo" class="logo-img">
+          <span class="logo-text">Rohan Nath</span>
         </a>
       </div>
       <nav class="nav-menu">
@@ -871,7 +878,7 @@
           </div>
         </div>
         <div class="portfolio-info">
-          <img src="images/about.JPG" alt="Portrait of Rohan Nath" class="portfolio-picture">
+          <img src="images/about.jpeg" alt="Portrait of Rohan Nath" class="portfolio-picture">
         </div>
       </div>
     </section>
@@ -884,16 +891,6 @@
           <h3>Comparative and Evolutionary Genomics</h3>
           <p class="about-text">Comparative genomics is the field that compares the genomic features of different organisms to understand their evolutionary relationships and functional differences.</p>
           <p class="about-text">This approach helps identify conserved genes and regulatory elements across species, shedding light on evolutionary processes.</p>
-          <div class="research-video">
-            <iframe 
-              src="https://www.youtube.com/embed/U5CHfCIOPGI" 
-              title="Comparative and Evolutionary Genomics" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
-              class="research-video-iframe">
-            </iframe>
-          </div>
         </div>
         <div class="research-item">
           <h3>Pharmacogenomics</h3>
@@ -940,11 +937,11 @@
         <h1 class="section-title">Gallery</h1>
         <div class="slideshow-container">
           <div class="mySlides">
-            <img src="images/slide1.jpg" alt="Research Lab">
-            <div class="caption-container">Me and my love for marathons</div>
+            <img src="images/slide1.JPG" alt="Treks">
+            <div class="caption-container">Conquered Sandakphu-Phalut summit</div>
           </div>
           <div class="mySlides">
-            <img src="images/slide2.jpg" alt="Conference Presentation">
+            <img src="images/slide2.jpg" alt="Marathons">
             <div class="caption-container">Me and my love for marathons</div>
           </div>
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -958,10 +955,10 @@
       <div class="contact-box">
         <h1 class="section-title">Contact</h1>
         <p class="contact-info-text"><strong>Email:</strong> rohann20[at]iiserbpr[dot]ac[dot]in | rohan[dot]nath[dot]work[at]gmail[dot]com</p>
-        <p class="contact-info-text"><strong>Address:</strong> Indian Institute of Science Education and Research (Transit Campus), Govt. ITI Building Engg. School Junction, Gajapati Nagar, Berhampur, Odisha 760010</p>
+        <p class="contact-info-text"><strong>Address:</strong> Indian Institute of Science Education and Research (Permanent Campus), Laudigam, Village Road, Brahmapur, Odisha 760003</p>
         <h2 class="map-title">Office Location</h2>
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15061.408415029606!2d84.8275064!3d19.3105216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d509c85462089%3A0x2d772056ef73e7e7!2sIndian%20Institute%20of%20Science%20Education%20and%20Research%20Berhampur!5e0!3m2!1sen!2sin!4v1724602909634!5m2!1sen!2sin" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33266.49639580708!2d84.8441635880854!3d19.205376932722952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d5c0ea3b96c51%3A0xc65c771b520b146b!2sIndian%20Institute%20of%20Science%20Education%20and%20Research%20Berhampur%20(Permanent%20Campus)!5e1!3m2!1sen!2sin!4v1763910795419!5m2!1sen!2sin" 
           width="100%" 
           height="450" 
           style="border:0;" 
