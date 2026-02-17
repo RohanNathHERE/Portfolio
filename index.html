@@ -61,6 +61,30 @@
       color: var(--text-light);
     }
 
+    /* Bio background canvas — light mode only */
+    #bio-canvas {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    body.light-mode #bio-canvas {
+      display: block;
+      opacity: 1;
+    }
+
+    .header, main, .footer {
+      position: relative;
+      z-index: 1;
+    }
+
     /* Header */
     .header {
       background: var(--header-bg-dark);
@@ -1017,6 +1041,7 @@
   </style>
 </head>
 <body>
+  <canvas id="bio-canvas"></canvas>
   <!-- Navigation Bar -->
   <header class="header">
     <div class="nav-container">
@@ -1317,6 +1342,665 @@
         plusSlides(1);
       }
     });
+  </script>
+  <script>
+  // ══════════════════════════════════════════════════════════════════
+  //  BIOLOGICAL BACKGROUND CANVAS  —  detailed scientific graffiti
+  // ══════════════════════════════════════════════════════════════════
+  const canvas = document.getElementById('bio-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  // Master palette — all at very low opacity so they don't fight text
+  const C_MAIN  = 'rgba(0,0,0,0.06)';   // primary strokes
+  const C_MID   = 'rgba(0,0,0,0.045)';  // secondary / fill areas
+  const C_LIGHT = 'rgba(0,0,0,0.028)';  // faint annotation text
+  const FONT    = '500 10px "Inter", sans-serif';
+
+  /* ── helpers ── */
+  function S(s,f,c=C_MAIN) { ctx.strokeStyle=c; ctx.lineWidth=s; ctx.lineCap='round'; ctx.lineJoin='round'; if(f!==undefined){ctx.fillStyle=f;} }
+  function dot(x,y,r,fill=C_MAIN){ ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=fill; ctx.fill(); }
+  function hexPath(cx,cy,r,rot=0){
+    ctx.beginPath();
+    for(let i=0;i<6;i++){
+      const a=(Math.PI/3)*i+rot;
+      const px=cx+r*Math.cos(a), py=cy+r*Math.sin(a);
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.closePath();
+  }
+  function label(txt,x,y,col=C_LIGHT){
+    ctx.save(); ctx.font=FONT; ctx.fillStyle=col;
+    ctx.fillText(txt,x,y); ctx.restore();
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  1.  DNA DOUBLE HELIX  (full-height, multiple columns)          */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawHelix(x, amp, freq, phase, H, label_bases=false) {
+    // strand A
+    S(1.3); ctx.strokeStyle=C_MAIN;
+    ctx.beginPath();
+    for(let y=0;y<H;y+=1.5){
+      const px=x+amp*Math.sin(freq*y+phase);
+      y===0?ctx.moveTo(px,y):ctx.lineTo(px,y);
+    }
+    ctx.stroke();
+    // strand B
+    ctx.beginPath();
+    for(let y=0;y<H;y+=1.5){
+      const px=x+amp*Math.sin(freq*y+phase+Math.PI);
+      y===0?ctx.moveTo(px,y):ctx.lineTo(px,y);
+    }
+    ctx.stroke();
+
+    // base-pair rungs — with alternating A-T / G-C colouring via opacity
+    const period=(2*Math.PI)/freq;
+    const bases=['A—T','G—C','T—A','C—G'];
+    let bi=0;
+    for(let y=20;y<H-20;y+=period/2){
+      const x1=x+amp*Math.sin(freq*y+phase);
+      const x2=x+amp*Math.sin(freq*y+phase+Math.PI);
+      // rung line — slightly thicker mid-section
+      S(1.1); ctx.strokeStyle=C_MID;
+      ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.stroke();
+      // minor groove dots
+      dot(x1,y,2.4,C_MAIN); dot(x2,y,2.4,C_MAIN);
+      // base-pair label
+      if(label_bases){ label(bases[bi%4],(x1+x2)/2-8,y-3,C_LIGHT); }
+      bi++;
+    }
+
+    // phosphate backbone ticks (sugar-phosphate detail)
+    S(0.7); ctx.strokeStyle=C_LIGHT;
+    for(let y=10;y<H;y+=period/6){
+      const px=x+amp*Math.sin(freq*y+phase);
+      ctx.beginPath();
+      ctx.moveTo(px-4,y); ctx.lineTo(px+4,y);
+      ctx.stroke();
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  2.  BENZENE / AROMATIC RING  (Kekulé + IUPAC bond detail)      */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawBenzene(cx,cy,r,rot=0){
+    S(1.2); ctx.strokeStyle=C_MAIN;
+    hexPath(cx,cy,r,rot); ctx.stroke();
+    // inner circle (delocalised electrons — modern notation)
+    ctx.beginPath(); ctx.arc(cx,cy,r*0.52,0,Math.PI*2); ctx.stroke();
+    // bond extensions (substituent stubs — 3 of 6 vertices)
+    for(let i=0;i<6;i+=2){
+      const a=(Math.PI/3)*i+rot;
+      const ox=cx+r*Math.cos(a), oy=cy+r*Math.sin(a);
+      S(0.8); ctx.strokeStyle=C_LIGHT;
+      ctx.beginPath();
+      ctx.moveTo(ox,oy);
+      ctx.lineTo(ox+16*Math.cos(a), oy+16*Math.sin(a));
+      ctx.stroke();
+      dot(ox+16*Math.cos(a),oy+16*Math.sin(a),1.8,C_LIGHT);
+    }
+    dot(cx,cy,2.2,C_MAIN);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  3.  CONDENSED STRUCTURAL FORMULA CLUSTER (amino acid skeleton) */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawAminoAcid(cx,cy,scale=1){
+    // Generic amino acid: NH2 – CH(R) – COOH
+    S(1.1,C_MID);
+    const dx=scale*28, dy=scale*16;
+    // backbone
+    ctx.strokeStyle=C_MAIN;
+    ctx.beginPath();
+    ctx.moveTo(cx-dx,cy);
+    ctx.lineTo(cx,cy-dy);
+    ctx.lineTo(cx+dx,cy);
+    ctx.stroke();
+    // NH2 group
+    S(0.9); ctx.strokeStyle=C_MID;
+    ctx.beginPath(); ctx.moveTo(cx-dx,cy); ctx.lineTo(cx-dx-14*scale,cy-10*scale); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx-dx,cy); ctx.lineTo(cx-dx-14*scale,cy+10*scale); ctx.stroke();
+    // R side chain (stub)
+    ctx.beginPath(); ctx.moveTo(cx,cy-dy); ctx.lineTo(cx,cy-dy-20*scale); ctx.stroke();
+    dot(cx,cy-dy-20*scale,3*scale,C_MID);
+    // COOH group (double bond O)
+    ctx.beginPath(); ctx.moveTo(cx+dx,cy); ctx.lineTo(cx+dx+18*scale,cy-12*scale); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx+dx,cy); ctx.lineTo(cx+dx+8*scale,cy+14*scale); ctx.stroke();
+    // double bond on carboxyl
+    S(0.7); ctx.strokeStyle=C_LIGHT;
+    ctx.beginPath(); ctx.moveTo(cx+dx+3,cy+11*scale); ctx.lineTo(cx+dx+11*scale,cy+16*scale); ctx.stroke();
+    // atom dots
+    dot(cx-dx,cy,3.5*scale,C_MID); dot(cx,cy-dy,3*scale,C_MID); dot(cx+dx,cy,3.5*scale,C_MID);
+    label('NH₂',cx-dx-22*scale,cy+4*scale); label('COOH',cx+dx+8*scale,cy+22*scale); label('R',cx+3*scale,cy-dy-24*scale);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  4.  CELL (animal) — membrane, nucleus, organelles              */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawCell(cx,cy,r){
+    // outer plasma membrane — double line
+    S(1.5); ctx.strokeStyle=C_MID;
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
+    S(0.6); ctx.strokeStyle=C_LIGHT;
+    ctx.beginPath(); ctx.arc(cx,cy,r-3.5,0,Math.PI*2); ctx.stroke();
+
+    // phospholipid bumps on membrane (simplified)
+    S(0.6); ctx.strokeStyle=C_LIGHT;
+    const bumps=Math.floor(2*Math.PI*r/9);
+    for(let i=0;i<bumps;i++){
+      const a=(2*Math.PI/bumps)*i;
+      const bx=cx+(r-1.5)*Math.cos(a), by=cy+(r-1.5)*Math.sin(a);
+      ctx.beginPath(); ctx.arc(bx,by,1.8,a,a+Math.PI); ctx.stroke();
+    }
+
+    // nucleus (with double envelope + nucleolus)
+    const nr=r*0.38, nx=cx+r*0.12, ny=cy-r*0.1;
+    S(1.1); ctx.strokeStyle=C_MAIN;
+    ctx.beginPath(); ctx.arc(nx,ny,nr,0,Math.PI*2); ctx.stroke();
+    S(0.7); ctx.strokeStyle=C_LIGHT;
+    ctx.beginPath(); ctx.arc(nx,ny,nr+3.5,0,Math.PI*2); ctx.stroke();
+    // nuclear pores
+    const pores=8;
+    for(let i=0;i<pores;i++){
+      const a=(2*Math.PI/pores)*i;
+      const px=nx+(nr+1.5)*Math.cos(a), py=ny+(nr+1.5)*Math.sin(a);
+      dot(px,py,2.5,C_MID);
+      ctx.beginPath(); ctx.arc(px,py,4,a-0.5,a+0.5); S(0.7); ctx.strokeStyle=C_LIGHT; ctx.stroke();
+    }
+    // nucleolus
+    S(1.0); ctx.strokeStyle=C_MID;
+    ctx.beginPath(); ctx.arc(nx-nr*0.2,ny+nr*0.1,nr*0.32,0,Math.PI*2); ctx.stroke();
+
+    // endoplasmic reticulum (wavy membranes)
+    S(0.8); ctx.strokeStyle=C_MID;
+    for(let i=0;i<3;i++){
+      const ery=cy+r*0.18+i*8;
+      ctx.beginPath();
+      for(let ex=cx-r*0.55;ex<cx-r*0.05;ex+=2){
+        const ey=ery+5*Math.sin((ex-(cx-r*0.55))*0.3+i*1.1);
+        ex===cx-r*0.55?ctx.moveTo(ex,ey):ctx.lineTo(ex,ey);
+      }
+      ctx.stroke();
+      // ribosomes on rough ER
+      for(let ex=cx-r*0.55;ex<cx-r*0.05;ex+=10){
+        const ey=ery+5*Math.sin((ex-(cx-r*0.55))*0.3+i*1.1);
+        dot(ex,ey-3,1.8,C_LIGHT);
+      }
+    }
+
+    // golgi (stacked cisternae)
+    const gx=cx+r*0.3, gy=cy+r*0.15;
+    S(0.9); ctx.strokeStyle=C_MID;
+    for(let i=0;i<5;i++){
+      ctx.beginPath();
+      ctx.ellipse(gx, gy+i*6, r*0.24-i*1.5, 5, 0.3, 0, Math.PI*2);
+      ctx.stroke();
+    }
+    // vesicles budding
+    for(let i=0;i<3;i++){
+      dot(gx+r*0.28-i*5,gy+i*8,3,C_LIGHT);
+    }
+
+    // mitochondria (2–3)
+    drawMitochondrion(cx-r*0.38, cy+r*0.36, r*0.22);
+    drawMitochondrion(cx+r*0.35, cy-r*0.42, r*0.18);
+
+    // cytoskeleton filaments
+    S(0.7); ctx.strokeStyle=C_LIGHT;
+    ctx.setLineDash([3,4]);
+    ctx.beginPath(); ctx.moveTo(cx-r*0.6,cy-r*0.5); ctx.quadraticCurveTo(cx,cy-r*0.2,cx+r*0.55,cy+r*0.4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx-r*0.4,cy+r*0.6); ctx.quadraticCurveTo(cx+r*0.1,cy,cx+r*0.5,cy-r*0.55); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // free ribosomes (dots)
+    const ribos=[[-0.55,-0.28],[0.42,0.45],[-0.18,-0.5],[0.55,0.1],[-0.5,0.18]];
+    ribos.forEach(([dx,dy])=>{ dot(cx+r*dx,cy+r*dy,2.2,C_LIGHT); });
+  }
+
+  function drawMitochondrion(cx,cy,r){
+    S(1.1); ctx.strokeStyle=C_MID;
+    // outer membrane (oval)
+    ctx.save(); ctx.translate(cx,cy); ctx.scale(2.2,1);
+    ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.restore(); ctx.stroke();
+    // inner membrane
+    ctx.save(); ctx.translate(cx,cy); ctx.scale(2.0,0.82);
+    ctx.beginPath(); ctx.arc(0,0,r*0.88,0,Math.PI*2); ctx.restore();
+    S(0.7); ctx.strokeStyle=C_LIGHT; ctx.stroke();
+    // cristae (finger-like infoldings)
+    S(0.8); ctx.strokeStyle=C_LIGHT;
+    const wr=r*2.0;
+    for(let i=1;i<=4;i++){
+      const cx2=cx-wr*0.6+i*wr*0.3;
+      ctx.beginPath();
+      ctx.moveTo(cx2, cy-r*0.75);
+      ctx.bezierCurveTo(cx2+r*0.35, cy-r*0.2, cx2-r*0.35, cy+r*0.2, cx2, cy+r*0.75);
+      ctx.stroke();
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  5.  GPCR SCHEMATIC (7-TM helix bundle cross-section)           */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawGPCR(cx,cy,scale=1){
+    // 7 transmembrane helices arranged in slightly irregular oval
+    const helixPos=[
+      {dx:-52,dy:-8}, {dx:-32,dy:-28}, {dx:-4,dy:-34}, {dx:26,dy:-24},
+      {dx:46,dy:-4},  {dx:36,dy:24},   {dx:6,dy:32}
+    ];
+    S(1.1); ctx.strokeStyle=C_MAIN;
+    helixPos.forEach(({dx,dy},i)=>{
+      const hx=(cx+dx*scale), hy=(cy+dy*scale);
+      const hw=8*scale, hh=22*scale;
+      // helix cylinder (rounded rect)
+      ctx.beginPath();
+      ctx.roundRect(hx-hw/2, hy-hh/2, hw, hh, hw/2);
+      ctx.stroke();
+      // inner helix coil lines
+      S(0.6); ctx.strokeStyle=C_LIGHT;
+      for(let j=1;j<=3;j++){
+        ctx.beginPath();
+        ctx.moveTo(hx-hw/2+1*scale, hy-hh/2+j*(hh/4));
+        ctx.lineTo(hx+hw/2-1*scale, hy-hh/2+(j-0.5)*(hh/4));
+        ctx.stroke();
+      }
+      S(1.1); ctx.strokeStyle=C_MAIN;
+      // TM label
+      label(`TM${i+1}`,hx-8*scale,hy+hh/2+12*scale,C_LIGHT);
+    });
+
+    // extracellular loops connecting helices
+    S(0.9); ctx.strokeStyle=C_MID;
+    for(let i=0;i<helixPos.length-1;i+=2){
+      const a=helixPos[i], b=helixPos[i+1];
+      ctx.beginPath();
+      ctx.moveTo(cx+a.dx*scale, cy+a.dy*scale-22*scale);
+      ctx.quadraticCurveTo(
+        cx+(a.dx+b.dx)/2*scale, cy+(a.dy+b.dy)/2*scale-38*scale,
+        cx+b.dx*scale, cy+b.dy*scale-22*scale
+      );
+      ctx.stroke();
+    }
+
+    // intracellular G-protein stub
+    S(1.0); ctx.strokeStyle=C_MID;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy+50*scale, 34*scale, 12*scale, 0, 0, Math.PI*2);
+    ctx.stroke();
+    label('Gα',cx-8*scale,cy+52*scale+4,C_LIGHT);
+    label('Gβγ',cx+14*scale,cy+52*scale+4,C_LIGHT);
+    // coupling lines
+    helixPos.slice(4).forEach(({dx,dy})=>{
+      S(0.7); ctx.strokeStyle=C_LIGHT;
+      ctx.beginPath();
+      ctx.moveTo(cx+dx*scale,cy+dy*scale+22*scale);
+      ctx.lineTo(cx,cy+50*scale);
+      ctx.stroke();
+    });
+
+    // ligand binding pocket (dashed oval)
+    S(0.8); ctx.strokeStyle=C_LIGHT;
+    ctx.setLineDash([3,3]);
+    ctx.beginPath();
+    ctx.ellipse(cx-10*scale,cy-18*scale,22*scale,14*scale,0,0,Math.PI*2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    label('Ligand',cx-18*scale,cy-32*scale,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  6.  RIBOSOME (simplified 30S + 50S)                           */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawRibosome(cx,cy,r){
+    S(1.1); ctx.strokeStyle=C_MAIN;
+    // large subunit (50S)
+    ctx.beginPath();
+    ctx.ellipse(cx, cy-r*0.18, r*1.0, r*0.7, 0, 0, Math.PI*2);
+    ctx.stroke();
+    // small subunit (30S)
+    ctx.beginPath();
+    ctx.ellipse(cx, cy+r*0.68, r*0.7, r*0.44, 0.2, 0, Math.PI*2);
+    ctx.stroke();
+    // mRNA channel (groove between subunits)
+    S(0.8); ctx.strokeStyle=C_MID;
+    ctx.beginPath();
+    ctx.moveTo(cx-r*0.7,cy+r*0.32);
+    ctx.quadraticCurveTo(cx,cy+r*0.1,cx+r*0.7,cy+r*0.32);
+    ctx.stroke();
+    // tRNA silhouette (L-shaped)
+    S(0.9); ctx.strokeStyle=C_LIGHT;
+    const tx=cx-r*0.25, ty=cy-r*0.45;
+    ctx.beginPath();
+    ctx.moveTo(tx,ty);
+    ctx.lineTo(tx,ty-r*0.5);
+    ctx.lineTo(tx+r*0.45,ty-r*0.5);
+    ctx.stroke();
+    dot(tx,ty,2,C_LIGHT); dot(tx+r*0.45,ty-r*0.5,2.5,C_MID);
+    label('50S',cx-10,cy-r*0.2+4,C_LIGHT);
+    label('30S',cx-10,cy+r*0.68+4,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  7.  PROTEIN SECONDARY STRUCTURE (α-helix + β-sheet)           */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawAlphaHelix(sx,sy,len,scale=1,angle=0){
+    // ribbon representation — stacked ellipses
+    const turns=len;
+    S(1.0); ctx.strokeStyle=C_MAIN;
+    for(let i=0;i<turns;i++){
+      const t=i/turns;
+      const hx=sx+Math.cos(angle)*i*14*scale;
+      const hy=sy+Math.sin(angle)*i*14*scale;
+      ctx.save();
+      ctx.translate(hx,hy);
+      ctx.rotate(angle+Math.PI/2);
+      ctx.beginPath();
+      ctx.ellipse(0,0,10*scale,4*scale,0,0,Math.PI*2);
+      ctx.strokeStyle = i%2===0 ? C_MAIN : C_MID;
+      ctx.stroke();
+      ctx.restore();
+    }
+    // cylinder axis
+    S(0.6); ctx.strokeStyle=C_LIGHT;
+    ctx.beginPath();
+    ctx.moveTo(sx,sy);
+    ctx.lineTo(sx+Math.cos(angle)*turns*14*scale, sy+Math.sin(angle)*turns*14*scale);
+    ctx.stroke();
+    label('α',sx+Math.cos(angle)*turns*7*scale-6,sy+Math.sin(angle)*turns*7*scale+14*scale,C_LIGHT);
+  }
+
+  function drawBetaSheet(sx,sy,strands=4,scale=1,angle=0){
+    S(1.0); ctx.strokeStyle=C_MAIN;
+    for(let s=0;s<strands;s++){
+      const ox=sx+Math.cos(angle+Math.PI/2)*s*18*scale;
+      const oy=sy+Math.sin(angle+Math.PI/2)*s*18*scale;
+      const ex=ox+Math.cos(angle)*50*scale;
+      const ey=oy+Math.sin(angle)*50*scale;
+      // arrow body
+      ctx.beginPath();
+      ctx.moveTo(ox,oy);
+      ctx.lineTo(ex-Math.cos(angle)*10*scale, ey-Math.sin(angle)*10*scale);
+      ctx.stroke();
+      // arrow head
+      ctx.beginPath();
+      const nx=-Math.sin(angle)*7*scale, ny=Math.cos(angle)*7*scale;
+      ctx.moveTo(ex,ey);
+      ctx.lineTo(ex-Math.cos(angle)*12*scale+nx, ey-Math.sin(angle)*12*scale+ny);
+      ctx.lineTo(ex-Math.cos(angle)*12*scale-nx, ey-Math.sin(angle)*12*scale-ny);
+      ctx.closePath(); ctx.stroke();
+      // H-bond dashes
+      if(s<strands-1){
+        S(0.6); ctx.strokeStyle=C_LIGHT; ctx.setLineDash([3,3]);
+        for(let h=0;h<4;h++){
+          const hx=ox+Math.cos(angle)*h*13*scale;
+          const hy=oy+Math.sin(angle)*h*13*scale;
+          ctx.beginPath();
+          ctx.moveTo(hx,hy);
+          ctx.lineTo(hx+Math.cos(angle+Math.PI/2)*18*scale, hy+Math.sin(angle+Math.PI/2)*18*scale);
+          ctx.stroke();
+        }
+        ctx.setLineDash([]); S(1.0); ctx.strokeStyle=C_MAIN;
+      }
+    }
+    label('β',sx-14*scale,sy+12*scale,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  8.  ENZYME + SUBSTRATE (lock-and-key)                         */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawEnzyme(cx,cy,r){
+    S(1.2); ctx.strokeStyle=C_MAIN;
+    // enzyme blob (kidney shape via bezier)
+    ctx.beginPath();
+    ctx.moveTo(cx-r,cy);
+    ctx.bezierCurveTo(cx-r,cy-r*1.0, cx+r*0.2,cy-r*1.0, cx+r*0.3,cy-r*0.35);
+    ctx.bezierCurveTo(cx+r*0.8,cy-r*0.1, cx+r*0.9,cy+r*0.3, cx+r*0.5,cy+r*0.7);
+    ctx.bezierCurveTo(cx,cy+r*1.1, cx-r*0.9,cy+r*1.0, cx-r,cy);
+    ctx.stroke();
+    // active site groove
+    S(1.0); ctx.strokeStyle=C_MID;
+    ctx.beginPath();
+    ctx.moveTo(cx+r*0.3,cy-r*0.35);
+    ctx.bezierCurveTo(cx+r*0.55,cy, cx+r*0.2,cy+r*0.3, cx+r*0.0,cy+r*0.18);
+    ctx.stroke();
+    // substrate (small molecule)
+    S(1.0); ctx.strokeStyle=C_MID;
+    ctx.beginPath();
+    ctx.roundRect(cx+r*0.12,cy-r*0.32,r*0.34,r*0.28,4);
+    ctx.stroke();
+    // catalytic residue dots
+    dot(cx+r*0.18,cy,2.8,C_MAIN); dot(cx+r*0.38,cy+r*0.1,2.8,C_MAIN);
+    label('E',cx-r*0.65,cy+4,C_LIGHT); label('S',cx+r*0.22,cy-r*0.2,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  9.  NEURON SCHEMATIC                                          */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawNeuron(cx,cy,scale=1){
+    S(1.0); ctx.strokeStyle=C_MAIN;
+    // soma
+    ctx.beginPath(); ctx.arc(cx,cy,18*scale,0,Math.PI*2); ctx.stroke();
+    // axon
+    S(1.2); ctx.strokeStyle=C_MID;
+    ctx.beginPath();
+    ctx.moveTo(cx+18*scale,cy);
+    ctx.bezierCurveTo(cx+50*scale,cy-10*scale, cx+80*scale,cy+10*scale, cx+120*scale,cy);
+    ctx.stroke();
+    // myelin sheaths (ovals along axon)
+    S(0.8); ctx.strokeStyle=C_LIGHT;
+    for(let i=0;i<3;i++){
+      ctx.beginPath();
+      ctx.ellipse(cx+38*scale+i*28*scale,cy,11*scale,6*scale,0,0,Math.PI*2);
+      ctx.stroke();
+    }
+    // axon terminal (buttons)
+    S(0.9); ctx.strokeStyle=C_MAIN;
+    [cy-12*scale,cy,cy+12*scale].forEach(ty=>{
+      ctx.beginPath(); ctx.arc(cx+122*scale,ty,5*scale,0,Math.PI*2); ctx.stroke();
+    });
+    // dendrites
+    S(0.9); ctx.strokeStyle=C_MID;
+    const dendAngles=[-2.6,-2.0,-1.4,2.4,2.9];
+    dendAngles.forEach(a=>{
+      const dx1=cx+22*scale*Math.cos(a), dy1=cy+22*scale*Math.sin(a);
+      const dx2=dx1+30*scale*Math.cos(a+0.3), dy2=dy1+30*scale*Math.sin(a+0.3);
+      ctx.beginPath(); ctx.moveTo(cx+16*scale*Math.cos(a),cy+16*scale*Math.sin(a));
+      ctx.quadraticCurveTo(dx1,dy1,dx2,dy2); ctx.stroke();
+      // branch tips
+      S(0.7); ctx.strokeStyle=C_LIGHT;
+      ctx.beginPath(); ctx.moveTo(dx2,dy2); ctx.lineTo(dx2+10*scale*Math.cos(a-0.4),dy2+10*scale*Math.sin(a-0.4)); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(dx2,dy2); ctx.lineTo(dx2+10*scale*Math.cos(a+0.4),dy2+10*scale*Math.sin(a+0.4)); ctx.stroke();
+      S(0.9); ctx.strokeStyle=C_MID;
+    });
+    label('Soma',cx-14*scale,cy+22*scale+10,C_LIGHT);
+    label('Axon',cx+55*scale,cy-14*scale,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  10.  PHYLOGENETIC TREE  (cladogram)                            */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawPhyloTree(cx,cy,depth=0,angle=-Math.PI/2,len=50,scale=1){
+    if(depth>4) return;
+    const ex=cx+len*scale*Math.cos(angle);
+    const ey=cy+len*scale*Math.sin(angle);
+    S(depth===0?1.3:0.9); ctx.strokeStyle = depth<2?C_MAIN:C_MID;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(ex,ey); ctx.stroke();
+    if(depth===4){
+      dot(ex,ey,3*scale,C_MAIN);
+      return;
+    }
+    const spread=(Math.PI*0.55)*Math.pow(0.7,depth);
+    drawPhyloTree(ex,ey,depth+1,angle-spread,len*0.72,scale);
+    drawPhyloTree(ex,ey,depth+1,angle+spread,len*0.72,scale);
+    if(depth<3) dot(ex,ey,2*scale,C_MID);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  11.  RESTRICTION ENZYME MAP (linear DNA with cut sites)        */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawRestrictionMap(sx,sy,len,scale=1){
+    // linear dsDNA backbone
+    S(1.2); ctx.strokeStyle=C_MAIN;
+    ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx+len*scale,sy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx,sy+6*scale); ctx.lineTo(sx+len*scale,sy+6*scale); ctx.stroke();
+    // restriction sites
+    const sites=[0.2,0.45,0.72,0.88];
+    const names=['EcoRI','BamHI','HindIII','XhoI'];
+    S(0.9); ctx.strokeStyle=C_MID;
+    sites.forEach((t,i)=>{
+      const rx=sx+t*len*scale;
+      // cut symbol (staggered cut)
+      ctx.beginPath(); ctx.moveTo(rx,sy-8*scale); ctx.lineTo(rx-3*scale,sy+2*scale); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(rx,sy+14*scale); ctx.lineTo(rx+3*scale,sy+4*scale); ctx.stroke();
+      label(names[i],rx-14*scale,sy-12*scale,C_LIGHT);
+    });
+    // base pair scale bar
+    S(0.7); ctx.strokeStyle=C_LIGHT;
+    ctx.beginPath(); ctx.moveTo(sx,sy+20*scale); ctx.lineTo(sx+len*scale*0.2,sy+20*scale); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx,sy+17*scale); ctx.lineTo(sx,sy+23*scale); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx+len*scale*0.2,sy+17*scale); ctx.lineTo(sx+len*scale*0.2,sy+23*scale); ctx.stroke();
+    label('500bp',sx+len*scale*0.07,sy+30*scale,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  12.  ATP MOLECULE (structural formula)                         */
+  /* ──────────────────────────────────────────────────────────────── */
+  function drawATP(cx,cy,scale=1){
+    // adenine base (fused bicyclic — two hexagons sharing edge)
+    S(1.1); ctx.strokeStyle=C_MAIN;
+    drawBenzene(cx-18*scale,cy,14*scale,-Math.PI/6);
+    // second ring (imidazole — 5-membered)
+    ctx.beginPath();
+    for(let i=0;i<5;i++){
+      const a=(2*Math.PI/5)*i-Math.PI/2;
+      const px=cx+3*scale+12*scale*Math.cos(a), py=cy+12*scale*Math.sin(a);
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.closePath(); ctx.stroke();
+    // ribose (pentagon)
+    const rsx=cx+28*scale, rsy=cy+8*scale;
+    ctx.beginPath();
+    for(let i=0;i<5;i++){
+      const a=(2*Math.PI/5)*i-Math.PI/2;
+      const px=rsx+14*scale*Math.cos(a), py=rsy+14*scale*Math.sin(a);
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.closePath(); ctx.stroke();
+    // phosphate chain
+    S(1.0); ctx.strokeStyle=C_MID;
+    for(let i=0;i<3;i++){
+      const px=rsx+24*scale+i*18*scale, py=rsy;
+      ctx.beginPath(); ctx.arc(px,py,6*scale,0,Math.PI*2); ctx.stroke();
+      if(i<2){ ctx.beginPath(); ctx.moveTo(px+6*scale,py); ctx.lineTo(px+12*scale,py); ctx.stroke(); }
+      label(i===0?'α':i===1?'β':'γ',px-3*scale,py+3*scale,C_LIGHT);
+    }
+    label('ATP',cx-28*scale,cy-22*scale,C_LIGHT);
+  }
+
+  /* ──────────────────────────────────────────────────────────────── */
+  /*  MASTER DRAW — lay everything out across the full page          */
+  /* ──────────────────────────────────────────────────────────────── */
+  function resize(){
+    canvas.width  = window.innerWidth;
+    canvas.height = document.body.scrollHeight;
+    draw();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const W=canvas.width, H=canvas.height;
+
+    // ── DNA helices (8 columns at staggered x positions) ──
+    [
+      { x:W*0.03, amp:26, freq:0.021, phase:0,           lab:false },
+      { x:W*0.14, amp:20, freq:0.017, phase:Math.PI*0.7, lab:true  },
+      { x:W*0.47, amp:28, freq:0.020, phase:Math.PI*0.3, lab:false },
+      { x:W*0.58, amp:18, freq:0.019, phase:Math.PI*1.1, lab:true  },
+      { x:W*0.72, amp:24, freq:0.022, phase:Math.PI*0.5, lab:false },
+      { x:W*0.86, amp:22, freq:0.018, phase:Math.PI*0.9, lab:false },
+      { x:W*0.96, amp:16, freq:0.023, phase:Math.PI*0.2, lab:false },
+    ].forEach(h=>drawHelix(h.x,h.amp,h.freq,h.phase,H,h.lab));
+
+    // ── Benzene / aromatic rings ──
+    [
+      {cx:W*0.26,cy:140, r:28},{cx:W*0.62,cy:280,r:22},{cx:W*0.41,cy:480,r:34},
+      {cx:W*0.79,cy:390,r:26},{cx:W*0.11,cy:650,r:24},{cx:W*0.50,cy:750,r:30},
+      {cx:W*0.84,cy:640,r:22},{cx:W*0.23,cy:920,r:32},{cx:W*0.66,cy:1050,r:20},
+      {cx:W*0.43,cy:1180,r:36},{cx:W*0.09,cy:1300,r:22},{cx:W*0.77,cy:1420,r:26},
+      {cx:W*0.32,cy:1540,r:28},{cx:W*0.55,cy:1680,r:24},{cx:W*0.90,cy:1800,r:30},
+    ].forEach(h=>{ if(h.cy<H+60) drawBenzene(h.cx,h.cy,h.r); });
+
+    // ── Amino acids ──
+    [
+      {cx:W*0.30,cy:200,  s:0.9},{cx:W*0.68,cy:560,  s:0.85},{cx:W*0.20,cy:860,  s:1.0},
+      {cx:W*0.55,cy:1100, s:0.9},{cx:W*0.82,cy:1320, s:0.8}, {cx:W*0.38,cy:1600, s:0.9},
+    ].forEach(a=>{ if(a.cy<H+60) drawAminoAcid(a.cx,a.cy,a.s); });
+
+    // ── Cells ──
+    [
+      {cx:W*0.32,cy:370, r:52},{cx:W*0.70,cy:700, r:44},
+      {cx:W*0.16,cy:1000,r:48},{cx:W*0.57,cy:1250,r:56},
+      {cx:W*0.88,cy:1500,r:40},
+    ].forEach(c=>{ if(c.cy<H+80) drawCell(c.cx,c.cy,c.r); });
+
+    // ── GPCR schematics ──
+    [
+      {cx:W*0.44,cy:330, s:0.75},{cx:W*0.75,cy:900, s:0.70},
+      {cx:W*0.22,cy:1380,s:0.72},{cx:W*0.60,cy:1700,s:0.68},
+    ].forEach(g=>{ if(g.cy<H+100) drawGPCR(g.cx,g.cy,g.s); });
+
+    // ── Alpha helices ──
+    [
+      {sx:W*0.28,sy:630, len:6,s:1.0,a:0.2},{sx:W*0.65,sy:1150,len:5,s:0.9,a:-0.15},
+      {sx:W*0.10,sy:470, len:7,s:0.9,a:0.3},{sx:W*0.80,cy:1600,len:6,s:0.85,a:0.1},
+    ].forEach(h=>{ if((h.sy||h.cy)<H+60) drawAlphaHelix(h.sx,h.sy||h.cy,h.len,h.s,h.a); });
+
+    // ── Beta sheets ──
+    [
+      {sx:W*0.36,sy:800, str:4,s:0.9,a:0.1},{sx:W*0.62,sy:480, str:3,s:0.85,a:-0.1},
+      {sx:W*0.15,sy:1180,str:5,s:0.9,a:0.05},{sx:W*0.75,sy:1400,str:4,s:0.8,a:0.15},
+    ].forEach(b=>{ if(b.sy<H+60) drawBetaSheet(b.sx,b.sy,b.str,b.s,b.a); });
+
+    // ── Ribosomes ──
+    [
+      {cx:W*0.52,cy:200,r:28},{cx:W*0.20,cy:650, r:24},{cx:W*0.85,cy:950, r:26},
+      {cx:W*0.40,cy:1350,r:22},{cx:W*0.70,cy:1550,r:28},
+    ].forEach(r=>{ if(r.cy<H+60) drawRibosome(r.cx,r.cy,r.r); });
+
+    // ── Phylogenetic trees ──
+    [
+      {cx:W*0.43,cy:550, s:0.75},{cx:W*0.78,cy:1150,s:0.70},
+      {cx:W*0.18,cy:1450,s:0.72},
+    ].forEach(t=>{ if(t.cy<H+120) drawPhyloTree(t.cx,t.cy,0,-Math.PI/2,44,t.s); });
+
+    // ── Restriction maps ──
+    [
+      {sx:W*0.25,sy:420, len:180,s:0.85},{sx:W*0.45,sy:1020,len:160,s:0.8},
+      {sx:W*0.06,sy:780, len:140,s:0.75},{sx:W*0.55,sy:1500,len:170,s:0.82},
+    ].forEach(r=>{ if(r.sy<H+60) drawRestrictionMap(r.sx,r.sy,r.len,r.s); });
+
+    // ── Neurons ──
+    [
+      {cx:W*0.12,cy:310, s:0.85},{cx:W*0.32,cy:1050,s:0.80},
+      {cx:W*0.58,cy:620, s:0.75},{cx:W*0.22,cy:1680,s:0.82},
+    ].forEach(n=>{ if(n.cy<H+60) drawNeuron(n.cx,n.cy,n.s); });
+
+    // ── Enzymes ──
+    [
+      {cx:W*0.85,cy:260, r:36},{cx:W*0.40,cy:1200,r:34},
+      {cx:W*0.70,cy:1750,r:30},{cx:W*0.12,cy:520, r:32},
+    ].forEach(e=>{ if(e.cy<H+80) drawEnzyme(e.cx,e.cy,e.r); });
+
+    // ── ATP molecules ──
+    [
+      {cx:W*0.60,cy:160, s:0.85},{cx:W*0.25,cy:1270,s:0.80},
+      {cx:W*0.80,cy:740, s:0.82},{cx:W*0.44,cy:1820,s:0.78},
+    ].forEach(a=>{ if(a.cy<H+60) drawATP(a.cx,a.cy,a.s); });
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('load',   resize);
+  const _obs = new MutationObserver(()=>resize());
+  _obs.observe(document.body,{attributes:true,attributeFilter:['class']});
   </script>
 </body>
 </html>
