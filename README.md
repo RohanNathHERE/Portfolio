@@ -1,23 +1,18 @@
 # Rohan Nath Portfolio
 
-A personal portfolio website showcasing my research, publications, and contact information. Designed to be clean, responsive, and user-friendly.
+A personal portfolio website showcasing my research, publications, gallery, and contact information.
 
-## Features
+## Structure
 
-- Professional and minimalistic design
-- Fully responsive for mobile and desktop
-- Sections for About, Research, Publications and Contact
-- Easy to customize
+- `index.html` - page content and semantic structure
+- `assets/css/styles.css` - visual system, layout, and responsive styling
+- `assets/js/main.js` - navigation, theme, scroll, and gallery interactions
+- `assets/js/bio-canvas.js` - light-mode scientific background canvas
+- `images/` - portrait, publication thumbnails, social icons, and gallery images
 
-## Getting Started
+## Run Locally
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/RohanNathHERE/Portfolio.git
-   cd Portfolio
-   ```
-
-2. Open `index.html` in a web browser to view the website locally.
+Open `index.html` in a browser. No build step is required.
 
 ## Author
 
