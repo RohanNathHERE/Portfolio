@@ -486,8 +486,13 @@ footer {
     background: var(--border);
   }
 
+  .about-photo {
+    display: block;
+  }
+
   .portrait {
     width: 100%;
+    height: auto;
     aspect-ratio: 1;
     object-fit: cover;
     border: 1px solid var(--border);
@@ -674,11 +679,15 @@ footer {
     transform: translateX(3px);
   }
 
-  .pub-thumb {
+  .pub-thumb-wrap {
     max-width: 86px;
-    height: auto;
     flex-shrink: 0;
     align-self: center;
+  }
+
+  .pub-thumb {
+    width: 100%;
+    height: auto;
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
     opacity: 0.82;
@@ -720,6 +729,12 @@ footer {
     border-radius: var(--r-lg);
     background: var(--surface-2);
     box-shadow: 0 10px 28px var(--shadow);
+  }
+
+  .gallery-slide picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .gallery-slide img {
@@ -1023,7 +1038,7 @@ footer {
     display: flex;
   }
 
-  .pub-thumb {
+  .pub-thumb-wrap {
     display: none;
   }
 
