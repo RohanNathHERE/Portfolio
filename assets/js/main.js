@@ -55,24 +55,44 @@
     const hamburger = $("#hamburger");
     const navMenu = $("#navMenu");
     const navLinks = $$(".nav-link");
+    const mobileQuery = matchMedia("(max-width: 720px)");
+
+    if (!hamburger || !navMenu) return;
+
+    const menuLinks = $$("a", navMenu);
 
     const closeNav = () => {
-      navMenu?.classList.remove("open");
-      hamburger?.setAttribute("aria-expanded", "false");
+      navMenu.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
     };
 
-    hamburger?.addEventListener("click", () => {
-      const isOpen = navMenu?.classList.toggle("open") ?? false;
+    const toggleNav = () => {
+      const isOpen = navMenu.classList.toggle("open");
       hamburger.setAttribute("aria-expanded", String(isOpen));
-    });
+    };
+
+    hamburger.addEventListener("click", toggleNav);
 
     document.addEventListener("click", (event) => {
-      if (!hamburger?.contains(event.target) && !navMenu?.contains(event.target)) {
+      if (!navMenu.classList.contains("open")) return;
+
+      const clickTarget = event.target;
+      if (clickTarget instanceof Node && !hamburger.contains(clickTarget) && !navMenu.contains(clickTarget)) {
         closeNav();
       }
     });
 
-    navLinks.forEach((link) => link.addEventListener("click", closeNav));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeNav();
+    });
+
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener("change", closeNav);
+    } else {
+      mobileQuery.addListener(closeNav);
+    }
+
+    menuLinks.forEach((link) => link.addEventListener("click", closeNav));
 
     const sections = $$("section[id]");
     const observer = new IntersectionObserver(
